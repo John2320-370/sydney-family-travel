@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雪梨 5 天 4 夜尊享親子旅遊規劃師 | 互動式地圖與行程指南</title>
+  <meta name="description" content="雪梨 8/22-8/26 五天四夜親子尊享旅遊行程，結合互動地圖、時間軸、天氣預報、Opal 票價計算與兒童友善避坑指南。">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo-badge">
+          <i class="fa-solid fa-compass"></i>
+        </div>
+        <div class="header-titles">
+          <h1>雪梨 5 天 4 夜尊享親子行程 <span>🇦🇺 Sydney Explorer</span></h1>
+          <p class="subtitle">
+            <span class="badge badge-date"><i class="fa-regular fa-calendar"></i> 2026.08.22 - 08.26</span>
+            <span class="badge badge-member"><i class="fa-solid fa-users"></i> 2 大 1 小（7歲男童）</span>
+            <span class="badge badge-vip"><i class="fa-solid fa-gem"></i> 私人頂級規劃</span>
+          </p>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-outline" id="btn-show-qrcode" title="手機掃碼連線">
+          <i class="fa-solid fa-mobile-screen-button"></i> <span class="btn-text">手機連線</span>
+        </button>
+        <button class="btn btn-outline" id="btn-toggle-view" title="切換地圖/列表視角">
+          <i class="fa-solid fa-arrows-split-up-and-left"></i> <span class="btn-text">適應全覽</span>
+        </button>
+        <button class="btn btn-primary" id="btn-open-tools">
+          <i class="fa-solid fa-calculator"></i> <span class="btn-text">Opal & 票券助手</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area: Left Sidebar (Timeline + Weather) & Right Map -->
+    <main class="main-content">
+      
+      <!-- Left Sidebar: Itinerary & Controls -->
+      <section class="sidebar-panel">
+        
+        <!-- Day Switcher Tabs -->
+        <nav class="day-tabs-container">
+          <div class="day-tabs" id="day-tabs">
+            <!-- Dynamically rendered day tabs -->
+          </div>
+        </nav>
+
+        <!-- Weather & Daily Overview Banner -->
+        <div class="daily-summary-card" id="daily-summary-card">
+          <!-- Dynamically updated per selected day -->
+        </div>
+
+        <!-- Mode Switcher (Timeline vs Food) -->
+        <div class="sidebar-modes" style="display: flex; background: var(--bg-dark); border-bottom: 1px solid var(--border-color); padding: 8px 16px; gap: 8px;">
+          <button class="mode-btn active" id="btn-mode-timeline" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 8px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.2s;">
+            <i class="fa-solid fa-route"></i> 行程時間軸
+          </button>
+          <button class="mode-btn" id="btn-mode-food" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 8px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.2s;">
+            <i class="fa-solid fa-utensils"></i> 今日美食推薦
+          </button>
+        </div>
+
+        <!-- Timeline Section -->
+        <div class="timeline-container" id="timeline-container-wrap">
+          <div class="timeline-header">
+            <div class="timeline-title-wrap">
+              <h2 id="current-day-title">今日行程時間軸</h2>
+              <span class="badge-count" id="spots-count">0 個景點</span>
+            </div>
+            <div class="timeline-filters">
+              <button class="filter-chip active" data-filter="all">全部</button>
+              <button class="filter-chip" data-filter="child">🧒 兒童重點</button>
+              <button class="filter-chip" data-filter="food">🍽️ 美食</button>
+              <button class="filter-chip" data-filter="planb">🌧️ 備案</button>
+            </div>
+          </div>
+
+          <!-- Total Route Distance & Time Estimator -->
+          <div class="route-summary-bar" id="route-summary-bar">
+            <div class="route-stat">
+              <i class="fa-solid fa-route"></i>
+              <span>當日移動總距：<strong id="total-distance">0 km</strong></span>
+            </div>
+            <div class="route-stat">
+              <i class="fa-regular fa-clock"></i>
+              <span>預估交通總時：<strong id="total-transit-time">0 分鐘</strong></span>
+            </div>
+          </div>
+
+          <!-- Timeline Items List -->
+          <div class="timeline-list" id="timeline-list">
+            <!-- Dynamically populated timeline cards -->
+          </div>
+        </div>
+
+        <!-- Food Section (Hidden by Default) -->
+        <div class="timeline-container" id="food-container-wrap" style="display: none; height: 100%; overflow-y: auto;">
+          <div class="timeline-header">
+            <div class="timeline-title-wrap">
+              <h2>今日周邊精選美食 (4.0★+)</h2>
+              <span class="badge-count" id="food-count">0 家餐廳</span>
+            </div>
+          </div>
+          
+          <div class="timeline-list" id="food-list-sidebar" style="padding-left: 0; margin-top: 12px; display: flex; flex-direction: column; gap: 14px;">
+            <!-- Dynamically populated food cards in sidebar -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Panel: Interactive Map -->
+      <section class="map-panel">
+        <div id="map"></div>
+        
+        <!-- Floating Map Legend & Controls -->
+        <div class="map-floating-card map-info-overlay" id="map-info-overlay">
+          <div class="overlay-header">
+            <span class="pulse-dot"></span>
+            <span id="map-status-text">點擊地圖上的 Pin 查看景點詳情</span>
+          </div>
+          <div class="map-layer-toggles" style="display: flex; align-items: center; gap: 4px;">
+            <button class="layer-btn active" id="btn-tile-voyager" title="清晰導航圖"><i class="fa-solid fa-map"></i> 探索圖</button>
+            <button class="layer-btn" id="btn-tile-satellite" title="衛星航照圖"><i class="fa-solid fa-satellite"></i> 衛星圖</button>
+            <button class="layer-btn" id="btn-toggle-food-layer" title="顯示/隱藏美食圖層" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;"><i class="fa-solid fa-utensils"></i> 美食圖層</button>
+          </div>
+        </div>
+
+        <!-- Selected Spot Quick View Overlay (Bottom of Map) -->
+        <div class="spot-quick-card" id="spot-quick-card" style="display: none;">
+          <button class="close-quick-card" id="close-quick-card"><i class="fa-solid fa-xmark"></i></button>
+          <div class="quick-card-body" id="quick-card-content">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal / Drawer: Opal Calculator & Booking Checklist -->
+    <div class="modal-backdrop" id="tools-modal" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-wallet"></i> Opal 交通計算機 ＆ 必備票券清單</h2>
+          <button class="modal-close-btn" id="btn-close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          
+          <!-- Opal Fares Comparison Section -->
+          <div class="tool-section">
+            <h3><i class="fa-solid fa-id-card"></i> 7 歲兒童 vs 成人 Opal 票價對比速查</h3>
+            <p class="section-desc">雪梨兒童（4-15歲）持<strong>實體 Child/Youth Opal 卡</strong>全時段享有<strong>半價與 50% 上限封頂</strong>優惠；大人可直接刷 Apple Pay / 信用卡。</p>
+            
+            <div class="opal-table-wrap">
+              <table class="opal-table">
+                <thead>
+                  <tr>
+                    <th>項目</th>
+                    <th>成人（Adult）</th>
+                    <th>兒童（Child/Youth）</th>
+                    <th>優惠省下</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>週一至週四 每日上限</td>
+                    <td><span class="price">$19.30 AUD</span></td>
+                    <td><span class="price price-child">$9.65 AUD</span></td>
+                    <td><span class="tag-save">省 50%</span></td>
+                  </tr>
+                  <tr>
+                    <td>週五、六、日 每日上限</td>
+                    <td><span class="price">$9.65 AUD</span></td>
+                    <td><span class="price price-child">$4.80 AUD</span></td>
+                    <td><span class="tag-save">省 50%（超划算）</span></td>
+                  </tr>
+                  <tr>
+                    <td>每週上限 (週一至週日)</td>
+                    <td><span class="price">$50.00 AUD</span></td>
+                    <td><span class="price price-child">$25.00 AUD</span></td>
+                    <td><span class="tag-save">省 50%</span></td>
+                  </tr>
+                  <tr>
+                    <td>單程基本票（火車/輕軌/公車）</td>
+                    <td>全票計費</td>
+                    <td><span class="price price-child">全票 5 折</span></td>
+                    <td><span class="tag-save">50% 折扣</span></td>
+                  </tr>
+                  <tr>
+                    <td>渡輪（Ferry）前往動物園</td>
+                    <td>$7.13 ～ $9.38</td>
+                    <td><span class="price price-child">$3.56 ～ $4.69</span></td>
+                    <td><span class="tag-save">省一半船票</span></td>
+                  </tr>
+                  <tr>
+                    <td>機場火車站進出費 (Station Fee)</td>
+                    <td>$18.61</td>
+                    <td>$16.64</td>
+                    <td>省 $1.97</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="tip-box">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <div><strong>重要提醒：</strong>小孩切勿直接拿一般信用卡感應進站，否則系統會以「成人全票」扣款。請於機場超商（WHSmith）或任一火車站購買免費的綠色 Child Opal 卡並儲值。</div>
+            </div>
+          </div>
+
+          <!-- Essential Bookings Checklist -->
+          <div class="tool-section">
+            <h3><i class="fa-solid fa-clipboard-check"></i> 出發前必備預約與避坑清單</h3>
+            <ul class="booking-checklist">
+              <li class="check-item done">
+                <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="check-info">
+                  <strong>奧本植物園櫻花祭（Auburn Cherry Blossom）</strong>
+                  <p>需提早於 Oztix 預訂「家庭票 $46.95 AUD（2大2小）」，現場不售票！</p>
+                </div>
+              </li>
+              <li class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-ticket"></i></div>
+                <div class="check-info">
+                  <strong>藍山景觀世界（Scenic World）無限次纜車套票</strong>
+                  <p>建議提前線上預約時段，暢玩 52 度傾斜火車、玻璃底高空纜車。</p>
+                </div>
+              </li>
+              <li class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-ship"></i></div>
+                <div class="check-info">
+                  <strong>8 月冬季出海賞鯨船（Whale Watching Cruise）</strong>
+                  <p>推薦選擇 Captain Cook 或 Fantasea 雙體大船，抗浪穩定度佳，備妥兒童暈船藥。</p>
+                </div>
+              </li>
+              <li class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-fish"></i></div>
+                <div class="check-info">
+                  <strong>SEA LIFE 水族館 ＋ 雪梨塔觀景台 2 合 1 套票</strong>
+                  <p>購買雙館套票最划算！提醒：<strong>雪梨塔請純觀景，避開 Skyfeast 自助餐</strong>。</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    <!-- Modal: Food Recommendations -->
+    <div class="modal-backdrop" id="food-modal" style="display: none;">
+      <div class="modal-card" style="max-width: 640px;">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-utensils" style="color: #f59e0b;"></i> <span id="food-modal-title">周邊精選美食 (4.0★+)</span></h2>
+          <button class="modal-close-btn" id="btn-close-food"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body" id="food-modal-body" style="gap: 16px; padding: 20px;">
+          <!-- Dynamically populated food cards -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Mobile QR Code Connection -->
+    <div class="modal-backdrop" id="qrcode-modal" style="display: none;">
+      <div class="modal-card" style="max-width: 440px; text-align: center;">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-mobile-screen-button"></i> 手機掃碼立即連線</h2>
+          <button class="modal-close-btn" id="btn-close-qrcode"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body" style="align-items: center; gap: 16px; padding: 24px;">
+          <p style="font-size: 0.88rem; color: #cbd5e1;">請確保手機與電腦連接在<strong>同一個 Wi-Fi 網路</strong>，使用手機相機掃描下方 QR Code 即可直接開啟：</p>
+          
+          <div style="background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: inline-block;">
+            <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=http://192.168.1.99:8080" alt="手機連線 QR Code" style="width: 200px; height: 200px; display: block;" />
+          </div>
+
+          <div style="background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 8px; padding: 10px 14px; width: 100%;">
+            <span style="font-size: 0.76rem; color: #94a3b8; display: block;">或在手機瀏覽器輸入網址：</span>
+            <strong style="font-size: 1rem; color: #38bdf8; letter-spacing: 0.02em;">http://192.168.1.99:8080</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- App JS -->
+  <script src="app.js"></script>
+</body>
+</html>
