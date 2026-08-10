@@ -471,12 +471,67 @@ let activeTile = 'voyager';
 let showFoodLayer = false;
 let activeSidebarMode = 'timeline';
 
+// --- 2.5 WEATHER API INTEGRATION ---
+let apiWeatherData = null;
+
+function updateWeatherDataFromApi() {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=-33.8688&longitude=151.2093&daily=weather_code,temperature_2m_max,temperature_2m_min,sunset,precipitation_probability_max&timezone=Australia%2FSydney&forecast_days=16';
+  
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.daily) {
+        apiWeatherData = data.daily;
+        // Merge API data into ITINERARY_DATA.days
+        ITINERARY_DATA.days.forEach(day => {
+          const parts = day.dateStr.split('/');
+          const month = parts[0].padStart(2, '0');
+          const date = parts[1].padStart(2, '0');
+          const targetDateStr = `2026-${month}-${date}`;
+          
+          const idx = apiWeatherData.time.indexOf(targetDateStr);
+          if (idx !== -1) {
+            const maxTemp = Math.round(apiWeatherData.temperature_2m_max[idx]);
+            const minTemp = Math.round(apiWeatherData.temperature_2m_min[idx]);
+            const code = apiWeatherData.weather_code[idx];
+            const prob = apiWeatherData.precipitation_probability_max[idx];
+            const rawSunset = apiWeatherData.sunset[idx];
+            let sunsetStr = day.weather.sunset;
+            if (rawSunset && rawSunset.includes('T')) {
+              sunsetStr = rawSunset.split('T')[1];
+            }
+            
+            day.weather.temp = `${minTemp}°C - ${maxTemp}°C`;
+            const { condition, icon } = translateWeatherCode(code);
+            day.weather.condition = `${condition} ｜ 降雨 ${prob}% ｜ 📶 Live`;
+            day.weather.icon = icon;
+            day.weather.sunset = sunsetStr;
+          }
+        });
+        renderCurrentDay();
+      }
+    })
+    .catch(err => console.log('Weather API offline, using fallback data.', err));
+}
+
+function translateWeatherCode(code) {
+  if (code === 0) return { condition: "晴朗", icon: "fa-sun" };
+  if (code >= 1 && code <= 3) return { condition: "晴時多雲", icon: "fa-cloud-sun" };
+  if (code === 45 || code === 48) return { condition: "有霧", icon: "fa-smog" };
+  if (code >= 51 && code <= 55) return { condition: "毛毛雨", icon: "fa-cloud-rain" };
+  if (code >= 61 && code <= 65) return { condition: "下雨", icon: "fa-cloud-showers-heavy" };
+  if (code >= 80 && code <= 82) return { condition: "局部陣雨", icon: "fa-cloud-sun-rain" };
+  if (code >= 95) return { condition: "雷雨", icon: "fa-cloud-bolt" };
+  return { condition: "多雲", icon: "fa-cloud" };
+}
+
 // --- 3. INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {
   initMap();
   renderDayTabs();
   renderCurrentDay();
   initEventListeners();
+  updateWeatherDataFromApi();
 });
 
 // --- 4. MAP INITIALIZATION ---
