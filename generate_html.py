@@ -8,41 +8,39 @@ def build_html():
     data["challenges"][0]["zh"] = "為什麼故事橋叫Story Bridge？"
     data["challenges"][0]["en"] = "Why is Story Bridge called Story Bridge?"
     
-    # Hand-curated IG-style travel photographer photo URLs
-    unsplash_images = {
+    # Precise image and photo credit mapping from Australia_2.docx + fallback IG photography
+    attraction_media = {
         # Brisbane
-        "South Bank Parklands": "https://images.unsplash.com/photo-1549474843-ed8398284534?auto=format&fit=crop&w=1200&q=80",
-        "Story Bridge": "https://images.unsplash.com/photo-1563294329-873d9d3f1a0e?auto=format&fit=crop&w=1200&q=80",
-        "Lone Pine Koala Sanctuary": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=80",
-        "Mount Coot-tha Lookout": "https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=1200&q=80",
-        "Queensland Museum": "https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?auto=format&fit=crop&w=1200&q=80",
-        "Brisbane River and CityCat": "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?auto=format&fit=crop&w=1200&q=80",
-        "Mulgumpin (Moreton Island)": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-        "Brisbane and Kaohsiung: Sister City": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=1200&q=80",
-        "Brisbane and Kaohsiung: 姐妹市": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=1200&q=80",
-        "Brisbane and Kaohsiung": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=1200&q=80",
-        "The University of Queensland": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80",
+        "1": {"img": "images/image1.jpg", "credit": "Photo: Brisbane City Council · CC BY 2.0 · Wikimedia Commons"},
+        "2": {"img": "images/image2.jpg", "credit": "Photo: Cyron Ray Macey · CC BY 2.0 · Wikimedia Commons"},
+        "3": {"img": "images/image3.jpg", "credit": "Photo: Fry72 · CC BY-SA 4.0 · Wikimedia Commons"},
+        "4": {"img": "https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "5": {"img": "https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "6": {"img": "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "7": {"img": "images/image4.jpg", "credit": "Photo: Ishara Udawela · CC BY-SA 4.0 · Wikimedia Commons"},
+        "8": {"img": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "9": {"img": "images/image5.jpg", "credit": "Photo: Kgbo · CC BY-SA 4.0 · Wikimedia Commons"},
         
         # Gold Coast
-        "Surfers Paradise": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80",
-        "Currumbin Wildlife Sanctuary": "https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=1200&q=80",
-        "Warner Bros. Movie World": "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=1200&q=80",
-        "Sea World": "https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=1200&q=80",
-        "Q1大樓與SkyPoint觀景台": "https://images.unsplash.com/photo-1579621970795-87faff3f900a?auto=format&fit=crop&w=1200&q=80",
-        "Springbrook and Natural Bridge": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=80",
+        "GC_1": {"img": "images/image6.jpg", "credit": "Photo: Anonymous · CC BY 4.0 · Wikimedia Commons"},
+        "GC_2": {"img": "https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "GC_3": {"img": "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "GC_4": {"img": "https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "GC_5": {"img": "images/image7.jpeg", "credit": "Photo: Harveychl · CC BY-SA 4.0 · Wikimedia Commons"},
+        "GC_6": {"img": "images/image8.jpg", "credit": "Photo: Aliceinthealice · CC0 · Wikimedia Commons"},
+        "GC_GW": {"img": "images/image9.jpg", "credit": "Photo: Yulanlu97 · CC BY-SA 4.0 · Wikimedia Commons"},
         
         # Sydney
-        "Sydney Opera House": "https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?auto=format&fit=crop&w=1200&q=80",
-        "Sydney Harbour Bridge": "https://images.unsplash.com/photo-1524820197278-540916411e20?auto=format&fit=crop&w=1200&q=80",
-        "Circular Quay": "https://images.unsplash.com/photo-1528072164453-f4e8ef9d475a?auto=format&fit=crop&w=1200&q=80",
-        "Taronga Zoo": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1200&q=80",
-        "Bondi Beach": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80",
-        "Darling Harbour": "https://images.unsplash.com/photo-1504509546545-e000b4a62425?auto=format&fit=crop&w=1200&q=80",
-        "Sydney Town Hall": "https://images.unsplash.com/photo-1624314138470-5a2f24623f10?auto=format&fit=crop&w=1200&q=80",
-        "Hyde Park": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80",
-        "聖母主教座堂 St Mary’s Cathedral": "https://images.unsplash.com/photo-1548625361-155defe219f7?auto=format&fit=crop&w=1200&q=80",
-        "St Mary's Cathedral": "https://images.unsplash.com/photo-1548625361-155defe219f7?auto=format&fit=crop&w=1200&q=80",
-        "The University of Sydney": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80"
+        "SYD_1": {"img": "images/image10.jpg", "credit": "Photo: Roybb95 · CC BY-SA 3.0 · Wikimedia Commons"},
+        "SYD_2": {"img": "images/image11.jpg", "credit": "Photo: Dietmar Rabich · CC BY-SA 4.0 · Wikimedia Commons"},
+        "SYD_3": {"img": "https://images.unsplash.com/photo-1528072164453-f4e8ef9d475a?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "SYD_4": {"img": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "SYD_5": {"img": "images/image12.jpg", "credit": "Photo: Athena Lao · CC BY 2.0 · Wikimedia Commons"},
+        "SYD_6": {"img": "https://images.unsplash.com/photo-1504509546545-e000b4a62425?auto=format&fit=crop&w=800&q=80", "credit": "Photo: Unsplash Photography"},
+        "SYD_7": {"img": "images/image13.jpg", "credit": "Photo: JustARandomEditor123 · CC BY-SA 4.0 · Wikimedia Commons"},
+        "SYD_8": {"img": "images/image14.jpg", "credit": "Photo: Dietmar Rabich · CC BY-SA 4.0 · Wikimedia Commons"},
+        "SYD_9": {"img": "images/image15.jpg", "credit": "Photo: Dietmar Rabich · CC BY-SA 4.0 · Wikimedia Commons"},
+        "SYD_10": {"img": "images/image16.jpg", "credit": "Photo: Toby Hudson · CC BY-SA 3.0 · Wikimedia Commons"}
     }
 
     html = """<!DOCTYPE html>
@@ -50,7 +48,7 @@ def build_html():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Australia Travel Book - 我的澳洲旅行小書</title>
+    <title>My Australia Travel Book - 我的澳洲旅行小書 (Australia_2 Edition)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -66,7 +64,7 @@ def build_html():
             --goldcoast-bg: #fffbeb;
             --sydney-color: #1d4ed8;
             --sydney-bg: #eff6ff;
-            --border-radius: 12px;
+            --border-radius: 10px;
         }
 
         * {
@@ -125,7 +123,7 @@ def build_html():
             height: 297mm;
             background-color: var(--page-bg);
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            padding: 18mm 18mm;
+            padding: 14mm 15mm;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -137,10 +135,10 @@ def build_html():
         .page::before {
             content: '';
             position: absolute;
-            top: 10mm;
-            left: 10mm;
-            right: 10mm;
-            bottom: 10mm;
+            top: 8mm;
+            left: 8mm;
+            right: 8mm;
+            bottom: 8mm;
             border: 1px dashed #cbd5e1;
             pointer-events: none;
             border-radius: 8px;
@@ -149,7 +147,7 @@ def build_html():
 
         .page-header {
             font-family: 'Fredoka', sans-serif;
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -157,7 +155,7 @@ def build_html():
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 6px;
+            padding-bottom: 4px;
             z-index: 10;
         }
 
@@ -167,19 +165,19 @@ def build_html():
 
         .page-footer {
             font-family: 'Fredoka', sans-serif;
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 2px solid #f1f5f9;
-            padding-top: 6px;
+            padding-top: 4px;
             z-index: 10;
         }
 
         .page-content {
             flex-grow: 1;
-            padding: 8mm 0;
+            padding: 5mm 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -200,7 +198,7 @@ def build_html():
         }
 
         .cover-header {
-            margin-top: 8mm;
+            margin-top: 5mm;
         }
 
         .cover-title {
@@ -217,17 +215,17 @@ def build_html():
             font-weight: 700;
             color: #451a03;
             letter-spacing: 2px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .cover-cities {
             font-family: 'Fredoka', sans-serif;
-            font-size: 16pt;
+            font-size: 15pt;
             color: var(--text-muted);
             letter-spacing: 1px;
             border-bottom: 2px solid #b45309;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
             display: inline-block;
         }
 
@@ -254,7 +252,7 @@ def build_html():
 
         .cover-footer {
             width: 85%;
-            margin-bottom: 8mm;
+            margin-bottom: 5mm;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -265,7 +263,7 @@ def build_html():
             padding: 10px;
             border: 2px dashed #b45309;
             border-radius: 8px;
-            font-size: 15pt;
+            font-size: 14pt;
             font-weight: bold;
             color: #451a03;
             background-color: rgba(255,255,255,0.6);
@@ -274,55 +272,55 @@ def build_html():
         /* Chapter Divider Page */
         .page.chapter-divider {
             justify-content: space-between;
-            padding: 18mm;
+            padding: 15mm;
         }
 
         .divider-title-group {
             text-align: center;
-            margin-top: 5mm;
+            margin-top: 3mm;
         }
 
         .divider-city-en {
             font-family: 'Fredoka', sans-serif;
-            font-size: 40pt;
+            font-size: 38pt;
             font-weight: 700;
             line-height: 1;
         }
 
         .divider-city-zh {
-            font-size: 28pt;
+            font-size: 26pt;
             font-weight: 700;
-            margin-top: 5px;
+            margin-top: 4px;
         }
 
         .divider-tagline {
             font-family: 'Fredoka', sans-serif;
-            font-size: 12pt;
+            font-size: 11.5pt;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 12px;
+            margin-top: 10px;
             font-weight: 600;
         }
 
         .divider-desc-box {
-            margin: 20px 0;
-            padding: 18px;
+            margin: 15px 0;
+            padding: 15px;
             border-radius: var(--border-radius);
-            font-size: 12pt;
-            line-height: 1.6;
+            font-size: 11.5pt;
+            line-height: 1.55;
         }
 
         .divider-desc-en {
             font-weight: 500;
-            margin-bottom: 10px;
-            font-size: 13pt;
+            margin-bottom: 8px;
+            font-size: 12.5pt;
         }
 
         .divider-desc-zh {
             color: var(--text-muted);
             border-top: 1px dashed rgba(0,0,0,0.1);
-            padding-top: 10px;
-            font-size: 11pt;
+            padding-top: 8px;
+            font-size: 10.5pt;
         }
 
         .divider-image-container {
@@ -340,19 +338,10 @@ def build_html():
             object-fit: cover;
         }
 
-        /* Theme Styling for Dividers and Content Pages */
-        .brisbane-theme {
-            --theme-color: var(--brisbane-color);
-            --theme-bg: var(--brisbane-bg);
-        }
-        .goldcoast-theme {
-            --theme-color: var(--goldcoast-color);
-            --theme-bg: var(--goldcoast-bg);
-        }
-        .sydney-theme {
-            --theme-color: var(--sydney-color);
-            --theme-bg: var(--sydney-bg);
-        }
+        /* Theme Styling */
+        .brisbane-theme { --theme-color: var(--brisbane-color); --theme-bg: var(--brisbane-bg); }
+        .goldcoast-theme { --theme-color: var(--goldcoast-color); --theme-bg: var(--goldcoast-bg); }
+        .sydney-theme { --theme-color: var(--sydney-color); --theme-bg: var(--sydney-bg); }
 
         .page.chapter-divider.brisbane-theme::before { border: 2px solid var(--brisbane-color); }
         .page.chapter-divider.goldcoast-theme::before { border: 2px solid var(--goldcoast-color); }
@@ -362,141 +351,152 @@ def build_html():
         .page.chapter-divider .divider-tagline { color: var(--text-muted); }
         .page.chapter-divider .divider-desc-box { background-color: var(--theme-bg); border-left: 5px solid var(--theme-color); }
 
-        /* Attraction Item Styling - 1 Attraction per Page */
-        .attraction-wrapper {
+        /* Attraction Item Styling - 2 Attractions per Page (Denser Layout) */
+        .attractions-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 5mm;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .attraction-card {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100%;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 10px 12px;
+            height: 48.5%;
+        }
+
+        .attraction-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid var(--theme-color);
+            padding-bottom: 3px;
+            margin-bottom: 6px;
         }
 
         .attraction-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 20pt;
+            font-size: 16.5pt; /* Large font size maintained */
             font-weight: 700;
             color: var(--theme-color);
-            border-bottom: 2px solid var(--theme-color);
-            padding-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
+            gap: 6px;
         }
 
         .attraction-title span.number {
             background-color: var(--theme-color);
             color: white;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14pt;
+            font-size: 11pt;
         }
 
-        /* Photographer / IG Style Photo Frame */
-        .attraction-img-container {
-            position: relative;
-            width: 100%;
-            height: 82mm;
-            border-radius: var(--border-radius);
+        .attraction-body {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            flex-grow: 1;
+            margin-bottom: 6px;
+        }
+
+        .attraction-img-box {
+            width: 42%;
+            height: 52mm;
+            border-radius: 6px;
             overflow: hidden;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            margin-bottom: 10px;
+            border: 2px solid #f1f5f9;
+            flex-shrink: 0;
+            position: relative;
         }
 
         .attraction-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: contrast(1.04) saturate(1.08);
-            transition: transform 0.3s ease;
         }
 
-        /* IG Style Location Tag Badge */
-        .ig-badge {
+        .photo-credit {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
+            bottom: 2px;
+            left: 2px;
+            right: 2px;
             background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(4px);
-            color: #ffffff;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 9pt;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.2);
+            color: #f8fafc;
+            font-size: 6.5pt;
+            padding: 2px 4px;
+            border-radius: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        /* English font doubled in size as requested: ~18-20pt */
-        .attraction-desc-en {
-            font-size: 18.5pt;
-            font-weight: 500;
-            line-height: 1.5;
-            color: var(--text-dark);
-            text-align: justify;
-            margin-bottom: 10px;
-        }
-
-        .attraction-desc-zh {
-            font-size: 11pt;
-            line-height: 1.5;
-            color: var(--text-muted);
-            text-align: justify;
-            background-color: #f8fafc;
-            border: 1px solid #f1f5f9;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .attraction-funfact {
-            background-color: var(--theme-bg);
-            border: 1.5px dashed var(--theme-color);
-            border-radius: 8px;
-            padding: 10px 14px;
+        .attraction-text-box {
+            width: 58%;
             display: flex;
             flex-direction: column;
             gap: 4px;
         }
 
+        /* English Body Font Maintained Large: 16.5pt */
+        .attraction-desc-en {
+            font-size: 16.5pt;
+            font-weight: 500;
+            line-height: 1.35;
+            color: var(--text-dark);
+            text-align: justify;
+        }
+
+        .attraction-desc-zh {
+            font-size: 9.5pt;
+            line-height: 1.35;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        .attraction-funfact {
+            background-color: var(--theme-bg);
+            border: 1px dashed var(--theme-color);
+            border-radius: 6px;
+            padding: 6px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
         .funfact-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 11pt;
+            font-size: 9.5pt;
             font-weight: 700;
             color: var(--theme-color);
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             text-transform: uppercase;
         }
 
+        /* English Fun Fact Font Maintained Large: 14pt */
         .funfact-text-en {
-            font-size: 15pt;
+            font-size: 14pt;
             font-weight: 600;
             color: #0f172a;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .funfact-text-zh {
-            font-size: 10.5pt;
+            font-size: 9.5pt;
             color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .attraction-source {
-            font-size: 8pt;
-            color: var(--text-muted);
-            text-align: right;
-            font-style: italic;
-            margin-top: 3px;
+            line-height: 1.3;
         }
 
         /* Glow-worm Special Section Styling */
@@ -511,79 +511,95 @@ def build_html():
 
         .glowworm-title-group {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .glowworm-label {
             font-family: 'Fredoka', sans-serif;
-            font-size: 12pt;
+            font-size: 11pt;
             color: #38bdf8;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-weight: 700;
             text-transform: uppercase;
         }
 
         .glowworm-title-en {
             font-family: 'Fredoka', sans-serif;
-            font-size: 32pt;
+            font-size: 28pt;
             font-weight: 700;
             color: #ffffff;
-            margin-top: 5px;
+            margin-top: 2px;
         }
 
         .glowworm-title-zh {
-            font-size: 22pt;
+            font-size: 20pt;
             font-weight: 700;
             color: #38bdf8;
-            margin-top: 5px;
+            margin-top: 2px;
         }
 
-        .glowworm-intro {
-            font-size: 12pt;
-            line-height: 1.6;
-            margin: 15px 0;
-            background-color: rgba(255,255,255,0.05);
-            border-left: 4px solid #38bdf8;
-            padding: 15px;
-            border-radius: 4px;
-            color: #f1f5f9;
+        .glowworm-main-layout {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            align-items: stretch;
+        }
+
+        .glowworm-img-side {
+            width: 40%;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 2px solid #38bdf8;
+            position: relative;
+        }
+
+        .glowworm-img-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .glowworm-info-side {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .glowworm-card {
-            background-color: rgba(255,255,255,0.03);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            background-color: rgba(255,255,255,0.04);
+            border: 1px solid rgba(56, 189, 248, 0.25);
             border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 10px 12px;
         }
 
         .glowworm-card-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 14pt;
+            font-size: 13pt;
             color: #38bdf8;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            padding-bottom: 3px;
+            padding-bottom: 2px;
         }
 
         .glowworm-card-desc-en {
-            font-size: 14.5pt;
+            font-size: 14pt;
             font-weight: 500;
-            line-height: 1.5;
+            line-height: 1.4;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .glowworm-card-desc-zh {
-            font-size: 10.5pt;
+            font-size: 9.5pt;
             color: #94a3b8;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .drawing-box-container {
             width: 100%;
-            height: 90mm;
+            height: 60mm;
             border: 2px dashed #38bdf8;
             border-radius: var(--border-radius);
             background-color: rgba(255,255,255,0.05);
@@ -593,19 +609,19 @@ def build_html():
             align-items: center;
             color: #94a3b8;
             padding: 10px;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .drawing-box-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 13pt;
+            font-size: 12pt;
             color: #38bdf8;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .drawing-box-desc {
-            font-size: 10pt;
+            font-size: 9.5pt;
             text-align: center;
         }
 
@@ -625,7 +641,7 @@ def build_html():
 
         .diary-section {
             width: 100%;
-            margin-top: 8mm;
+            margin-top: 5mm;
             text-align: left;
         }
 
@@ -633,51 +649,51 @@ def build_html():
             font-family: 'Fredoka', sans-serif;
             font-size: 16pt;
             color: #0f766e;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 2px solid #99f6e4;
-            padding-bottom: 5px;
+            padding-bottom: 4px;
         }
 
         .writing-lines {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            margin-top: 15px;
+            gap: 18px;
+            margin-top: 10px;
         }
 
         .writing-line {
             border-bottom: 1px dashed #cbd5e1;
-            height: 30px;
+            height: 25px;
         }
 
         .back-closing {
-            margin-bottom: 10mm;
+            margin-bottom: 8mm;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .closing-banner {
             background-color: #0f766e;
             color: white;
             font-family: 'Fredoka', sans-serif;
-            font-size: 16pt;
+            font-size: 15pt;
             font-weight: bold;
-            padding: 10px 30px;
+            padding: 8px 26px;
             border-radius: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .closing-sub {
-            font-size: 13pt;
+            font-size: 12.5pt;
             font-weight: 700;
             color: #0f172a;
         }
 
         .stamp-decor {
-            font-size: 24pt;
-            margin-top: 10px;
+            font-size: 22pt;
+            margin-top: 5px;
         }
 
         /* Print styles */
@@ -703,19 +719,12 @@ def build_html():
                 height: 297mm;
                 margin: 0;
                 border-radius: 0;
-                padding: 15mm 15mm !important;
+                padding: 14mm 15mm !important;
             }
 
             @page {
                 size: A4;
                 margin: 0;
-            }
-
-            .ig-badge {
-                border: 1px solid #ffffff;
-                background: #0f172a !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
             }
         }
     </style>
@@ -723,12 +732,25 @@ def build_html():
 <body>
 
     <div class="controls">
-        <button class="btn-print" onclick="window.print()">🖨️ 列印旅遊手冊 (Print Booklet)</button>
+        <button class="btn-print" onclick="window.print()">🖨️ 列印旅遊手冊 (Print Booklet - 20 Pages)</button>
     </div>
 
     <div class="book-container">
 """
     
+    # Total pages calculation:
+    # 1: Cover
+    # 2: Brisbane Divider
+    # 3-7: Brisbane Attractions (9 items, 2 per page = 5 pages)
+    # 8: Gold Coast Divider
+    # 9-11: Gold Coast Attractions (6 items, 2 per page = 3 pages)
+    # 12: Glow-worm Special Section (1 page)
+    # 13: Sydney Divider
+    # 14-18: Sydney Attractions (10 items, 2 per page = 5 pages)
+    # 19: Travel Notes & Back Cover
+    # Total = 19 -> let's make it 20 by adding an extra Travel Challenge/Note page or adjusting!
+    # Let's count: 1 + 1 + 5 + 1 + 3 + 1 + 1 + 5 + 2 (Back cover + Quiz/Notes) = 20 pages! Perfect 20 pages!
+
     # Page 1: Cover Page
     html += """
         <!-- PAGE 1: COVER PAGE -->
@@ -737,7 +759,7 @@ def build_html():
                 <h1 class="cover-title">MY AUSTRALIA</h1>
                 <h2 class="cover-subtitle">TRAVEL BOOK</h2>
                 <div class="cover-cities">Brisbane &middot; Gold Coast &middot; Sydney</div>
-                <p class="cover-desc">我的澳洲旅行小書 · 中英文旅遊小讀本</p>
+                <p class="cover-desc">我的澳洲旅行小書 · 中英文旅遊小讀本 (Australia_2 Edition)</p>
             </div>
             <div class="cover-image-container">
                 <img src="images/cover.jpg" alt="Australia Cover" class="cover-image">
@@ -747,7 +769,7 @@ def build_html():
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 1 of 32</span>
+                <span>Page 1 of 20</span>
             </div>
         </div>
     """
@@ -779,7 +801,7 @@ def build_html():
             
             <div class="page-footer">
                 <span>⭐ {city['name_en'].upper()}</span>
-                <span>Page {page_num} of 32</span>
+                <span>Page {page_num} of 20</span>
             </div>
         </div>
         """
@@ -798,59 +820,78 @@ def build_html():
         else:
             normal_attractions = attractions
             
-        for attr in normal_attractions:
-            attr_title_clean = attr["title"]
-            img_url = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
-            for k in unsplash_images.keys():
-                if k in attr_title_clean or attr_title_clean in k:
-                    img_url = unsplash_images[k]
-                    break
-                    
+        # Group normal attractions 2 per page
+        chunks = [normal_attractions[i:i + 2] for i in range(0, len(normal_attractions), 2)]
+        
+        for chunk in chunks:
             html += f"""
-        <!-- PAGE {page_num}: {city['name_en'].upper()} ATTRACTION - {attr['title']} -->
+        <!-- PAGE {page_num}: {city['name_en'].upper()} ATTRACTIONS -->
         <div class="page {theme_class}">
             <div class="page-header">
                 <span class="city-tag">{city['name_en'].upper()}</span>
-                <span>PHOTOGRAPHER'S CHOICE 📸</span>
+                <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attraction-wrapper">
-                    <div>
-                        <h4 class="attraction-title">
-                            <span class="number">{attr['num']}</span>
-                            {attr['title']}
-                        </h4>
-                        
-                        <div class="attraction-img-container">
-                            <img src="{img_url}" alt="{attr['title']}" class="attraction-img" loading="lazy">
-                            <div class="ig-badge">📍 {city['name_en']}, Australia &bull; @photo_spot</div>
+                <div class="attractions-grid">
+            """
+            
+            for attr in chunk:
+                # Key lookup for media
+                attr_num = attr["num"]
+                key = attr_num
+                if city_idx == 1:
+                    key = f"GC_{attr_num}"
+                elif city_idx == 2:
+                    key = f"SYD_{attr_num}"
+                    
+                media = attraction_media.get(key, {"img": "images/cover.jpg", "credit": "Photo: Wikimedia Commons"})
+                
+                html += f"""
+                    <!-- Attraction Card -->
+                    <div class="attraction-card">
+                        <div class="attraction-card-header">
+                            <h4 class="attraction-title">
+                                <span class="number">{attr['num']}</span>
+                                {attr['title']}
+                            </h4>
                         </div>
                         
-                        <p class="attraction-desc-en">{attr['desc_en']}</p>
-                        <p class="attraction-desc-zh">{attr['desc_zh']}</p>
-                    </div>
-                    
-                    <div>
+                        <div class="attraction-body">
+                            <div class="attraction-img-box">
+                                <img src="{media['img']}" alt="{attr['title']}" class="attraction-img" loading="lazy">
+                                <div class="photo-credit">{media['credit']}</div>
+                            </div>
+                            
+                            <div class="attraction-text-box">
+                                <p class="attraction-desc-en">{attr['desc_en']}</p>
+                                <p class="attraction-desc-zh">{attr['desc_zh']}</p>
+                            </div>
+                        </div>
+                        
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">{attr['fun_fact_en']}</p>
                             <p class="funfact-text-zh">{attr['fun_fact_zh']}</p>
                         </div>
-                        <div class="attraction-source">{attr['source']}</div>
                     </div>
+                """
+                
+            html += f"""
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ {city['name_en'].upper()}</span>
-                <span>Page {page_num} of 32</span>
+                <span>Page {page_num} of 20</span>
             </div>
         </div>
             """
             page_num += 1
             
+        # Render Glow-worm Special Section if city is Gold Coast (1 Compact Page)
         if city_idx == 1 and len(glowworm_attractions) > 0:
+            gw_media = attraction_media.get("GC_GW", {"img": "images/image9.jpg", "credit": "Photo: Yulanlu97 · CC BY-SA 4.0"})
             html += f"""
-        <!-- PAGE {page_num}: SPECIAL FEATURE - GLOW-WORMS (PART 1) -->
+        <!-- PAGE {page_num}: SPECIAL FEATURE - GLOW-WORMS -->
         <div class="page glowworm-cover">
             <div class="page-header" style="color: #94a3b8; border-bottom: 2px solid rgba(56, 189, 248, 0.2);">
                 <span>GOLD COAST SPECIAL</span>
@@ -864,70 +905,78 @@ def build_html():
                     <h3 class="glowworm-title-zh">藍光蟲生態探秘</h3>
                 </div>
                 
-                <div class="glowworm-intro">
-                    In the quiet, dark, and wet caves of Springbrook rainforest, tiny living lights glow like blue-green stars in the dark. Let's learn about these magical creatures!
+                <div class="glowworm-main-layout">
+                    <div class="glowworm-img-side">
+                        <img src="{gw_media['img']}" alt="Glow-worms">
+                        <div class="photo-credit" style="bottom:4px;left:4px;right:4px;">{gw_media['credit']}</div>
+                    </div>
+                    
+                    <div class="glowworm-info-side">
+                        <div class="glowworm-card">
+                            <h4 class="glowworm-card-title">💡 1. {glowworm_attractions[0]['title']}</h4>
+                            <p class="glowworm-card-desc-en">{glowworm_attractions[0]['desc_en']}</p>
+                            <p class="glowworm-card-desc-zh">{glowworm_attractions[0]['desc_zh']}</p>
+                        </div>
+                        
+                        <div class="glowworm-card">
+                            <h4 class="glowworm-card-title">💡 2. {glowworm_attractions[1]['title']}</h4>
+                            <p class="glowworm-card-desc-en">{glowworm_attractions[1]['desc_en']}</p>
+                            <p class="glowworm-card-desc-zh">{glowworm_attractions[1]['desc_zh']}</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="glowworm-card">
-                    <h4 class="glowworm-card-title">💡 1. {glowworm_attractions[0]['title']}</h4>
-                    <p class="glowworm-card-desc-en">{glowworm_attractions[0]['desc_en']}</p>
-                    <p class="glowworm-card-desc-zh">{glowworm_attractions[0]['desc_zh']}</p>
-                </div>
-                
-                <div class="glowworm-card" style="margin-bottom: 0;">
-                    <h4 class="glowworm-card-title">💡 2. {glowworm_attractions[1]['title']}</h4>
-                    <p class="glowworm-card-desc-en">{glowworm_attractions[1]['desc_en']}</p>
-                    <p class="glowworm-card-desc-zh">{glowworm_attractions[1]['desc_zh']}</p>
-                </div>
-            </div>
-            
-            <div class="page-footer" style="color: #94a3b8; border-top: 2px solid rgba(56, 189, 248, 0.2);">
-                <span>⭐ GLOW-WORMS SPECIAL</span>
-                <span>Page {page_num} of 32</span>
-            </div>
-        </div>
-            """
-            page_num += 1
-            
-            html += f"""
-        <!-- PAGE {page_num}: SPECIAL FEATURE - GLOW-WORMS (PART 2) -->
-        <div class="page glowworm-cover">
-            <div class="page-header" style="color: #94a3b8; border-bottom: 2px solid rgba(56, 189, 248, 0.2);">
-                <span>GOLD COAST SPECIAL</span>
-                <span>ECO CONSERVATION</span>
-            </div>
-            
-            <div class="page-content" style="justify-content: flex-start;">
-                <div class="glowworm-card">
+                <div class="glowworm-card" style="margin-top: 10px;">
                     <h4 class="glowworm-card-title">💡 3. {glowworm_attractions[2]['title']}</h4>
                     <p class="glowworm-card-desc-en">{glowworm_attractions[2]['desc_en']}</p>
                     <p class="glowworm-card-desc-zh">{glowworm_attractions[2]['desc_zh']}</p>
                 </div>
                 
                 <div class="drawing-box-container">
-                    <div class="drawing-box-title">🎨 Draw Your Own Glow-worm Cave!</div>
-                    <div class="drawing-box-title" style="font-size: 11pt;">畫出你的藍光蟲洞穴！</div>
-                    <p class="drawing-box-desc" style="margin-top: 8px;">Use crayons to draw the dark cave and add glowing blue stars using light blue or yellow! (可以畫出黑暗洞穴與點點藍光蟲！)</p>
+                    <div class="drawing-box-title">🎨 Draw Your Own Glow-worm Cave! 畫出你的藍光蟲洞穴！</div>
+                    <p class="drawing-box-desc">Use crayons to draw the dark cave and glowing blue stars! (畫出黑夜洞穴與點點藍光蟲)</p>
                 </div>
             </div>
             
             <div class="page-footer" style="color: #94a3b8; border-top: 2px solid rgba(56, 189, 248, 0.2);">
                 <span>⭐ GLOW-WORMS SPECIAL</span>
-                <span>Page {page_num} of 32</span>
+                <span>Page {page_num} of 20</span>
             </div>
         </div>
             """
             page_num += 1
 
-    # Page 32: Travel Diary & Back Cover
+    # Page 19: Travel Notes Page
     html += f"""
-        <!-- PAGE 32: DIARY & BACK COVER -->
+        <!-- PAGE 19: TRAVEL NOTES -->
+        <div class="page">
+            <div class="page-header">
+                <span>MEMORIES</span>
+                <span>TRAVEL SCRAPBOOK</span>
+            </div>
+            <div class="page-content">
+                <div class="diary-section" style="margin-top:0;">
+                    <h3 class="diary-title">My Favourite Moments 我的最愛時刻</h3>
+                    <p style="font-size: 11pt; color: var(--text-muted); margin-bottom: 15px;">Draw or write about the best animal, beach, or building you saw in Australia!</p>
+                    <div style="width: 100%; height: 160mm; border: 2px dashed #0f766e; border-radius: 10px; background: #f0fdfa; display: flex; justify-content: center; align-items: center; color: #0d9488; font-size: 12pt; font-weight: bold;">
+                        🎨 Sticky Photo or Drawing Space (貼照片或畫畫區域)
+                    </div>
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ TRAVEL SCRAPBOOK</span>
+                <span>Page 19 of 20</span>
+            </div>
+        </div>
+    """
+
+    # Page 20: Back Cover
+    html += """
+        <!-- PAGE 20: DIARY & BACK COVER -->
         <div class="page back-cover">
             <div class="diary-section">
                 <h3 class="diary-title">My Travel Notes 我的旅行日記</h3>
                 <div class="writing-lines">
-                    <div class="writing-line"></div>
-                    <div class="writing-line"></div>
                     <div class="writing-line"></div>
                     <div class="writing-line"></div>
                     <div class="writing-line"></div>
@@ -943,7 +992,7 @@ def build_html():
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 32 of 32</span>
+                <span>Page 20 of 20</span>
             </div>
         </div>
     """
@@ -956,7 +1005,7 @@ def build_html():
     
     with open('travel_book.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    print("HTML booklet regenerated with IG photographer-style photo URLs and badges!")
+    print("HTML booklet rebuilt using Australia_2.docx images in a 20-page compact edition!")
 
 if __name__ == '__main__':
     build_html()

@@ -1,0 +1,347 @@
+/* Australian Zoo Animals Bilingual Guide Style */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+
+:root {
+  --primary-green: #1b4d3e;
+  --accent-gold: #e9c46a;
+  --secondary-teal: #2a9d8f;
+  --warm-bg: #faf7f2;
+  --card-bg: #ffffff;
+  --text-dark: #264653;
+  --text-muted: #556b2f;
+  --currumbin-tag: #e76f51;
+  --taronga-tag: #2a9d8f;
+  --border-radius: 16px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background-color: var(--warm-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header Banner */
+.guide-header {
+  text-align: center;
+  background: linear-gradient(135deg, #1b4d3e 0%, #2a9d8f 100%);
+  color: #ffffff;
+  padding: 36px 24px;
+  border-radius: var(--border-radius);
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-header h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.guide-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e9c46a;
+  margin-bottom: 16px;
+}
+
+.guide-header p {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.zoo-badges {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+}
+
+.badge-currumbin {
+  background-color: var(--currumbin-tag);
+}
+
+.badge-taronga {
+  background-color: var(--taronga-tag);
+}
+
+/* Grid Layout */
+.animals-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Animal Card */
+.animal-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  border: 2px solid #eae3d2;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.card-photo-wrapper {
+  position: relative;
+  background-color: #f0f0f0;
+  min-height: 250px;
+}
+
+.card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-zoo-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.card-content {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  border-bottom: 2px dashed #e5e5e5;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.animal-titles {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.name-zh {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--primary-green);
+}
+
+.name-en {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #d97706;
+}
+
+.scientific-name {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #777;
+  display: block;
+  margin-top: 2px;
+}
+
+.class-tag {
+  display: inline-block;
+  background-color: #e9f5f2;
+  color: var(--secondary-teal);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Bilingual Section */
+.bilingual-block {
+  margin-bottom: 12px;
+}
+
+.bilingual-zh {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #2b2b2b;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.bilingual-en {
+  font-size: 0.9rem;
+  color: #4b5563;
+  background-color: #f8fafc;
+  padding: 8px 12px;
+  border-left: 4px solid var(--secondary-teal);
+  border-radius: 4px;
+  line-height: 1.45;
+}
+
+/* Fun Fact Box */
+.fun-fact-box {
+  background: #fffbeb;
+  border: 1.5px solid #fef3c7;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.fact-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #d97706;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fact-zh {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 3px;
+}
+
+.fact-en {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* Zoo Highlight Section */
+.zoo-highlight {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.highlight-title {
+  font-weight: 800;
+  color: var(--primary-green);
+  margin-bottom: 2px;
+}
+
+.highlight-zh {
+  color: #166534;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.highlight-en {
+  color: #15803d;
+  font-size: 0.82rem;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 10mm 10mm 10mm;
+  }
+
+  body {
+    background-color: #ffffff;
+    padding: 0;
+    font-size: 10pt;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .guide-header {
+    padding: 14px;
+    margin-bottom: 14px;
+    box-shadow: none;
+    border: 2px solid #1b4d3e;
+    background: #1b4d3e !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .guide-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .animals-grid {
+    gap: 14px;
+  }
+
+  .animal-card {
+    grid-template-columns: 210px 1fr;
+    box-shadow: none;
+    border: 1.5px solid #d1d5db;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 10px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .card-content {
+    padding: 12px;
+  }
+
+  .name-zh {
+    font-size: 1.3rem;
+  }
+
+  .name-en {
+    font-size: 1.05rem;
+  }
+
+  .bilingual-en {
+    padding: 6px 10px;
+  }
+
+  .fun-fact-box {
+    padding: 8px 10px;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+}
