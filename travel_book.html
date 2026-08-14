@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Australia Travel Book - 我的澳洲旅行小書</title>
-    <!-- Google Fonts: Fredoka for headings, Outfit for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f5f3ef;
+            --bg-color: #f3f0ea;
             --page-bg: #ffffff;
             --text-dark: #1e293b;
             --text-muted: #64748b;
@@ -39,7 +38,6 @@
             align-items: center;
         }
 
-        /* Screen Preview styles */
         .controls {
             margin-bottom: 20px;
             text-align: center;
@@ -57,7 +55,7 @@
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.2s ease;
             font-family: 'Fredoka', sans-serif;
         }
@@ -65,7 +63,6 @@
         .btn-print:hover {
             background-color: #047857;
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
         }
 
         .book-container {
@@ -75,13 +72,13 @@
             align-items: center;
         }
 
-        /* Page Layout - A4 Aspect Ratio on Screen */
+        /* Page Layout - A4 Size */
         .page {
             width: 210mm;
             height: 297mm;
             background-color: var(--page-bg);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-            padding: 15mm 15mm;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            padding: 18mm 18mm;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -90,14 +87,13 @@
             border-radius: 4px;
         }
 
-        /* Page Background Decoration */
         .page::before {
             content: '';
             position: absolute;
-            top: 8mm;
-            left: 8mm;
-            right: 8mm;
-            bottom: 8mm;
+            top: 10mm;
+            left: 10mm;
+            right: 10mm;
+            bottom: 10mm;
             border: 1px dashed #cbd5e1;
             pointer-events: none;
             border-radius: 8px;
@@ -106,15 +102,15 @@
 
         .page-header {
             font-family: 'Fredoka', sans-serif;
-            font-size: 9pt;
+            font-size: 10pt;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1.5px solid #f1f5f9;
-            padding-bottom: 4px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 6px;
             z-index: 10;
         }
 
@@ -124,27 +120,27 @@
 
         .page-footer {
             font-family: 'Fredoka', sans-serif;
-            font-size: 9pt;
+            font-size: 10pt;
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1.5px solid #f1f5f9;
-            padding-top: 4px;
+            border-top: 2px solid #f1f5f9;
+            padding-top: 6px;
             z-index: 10;
         }
 
         .page-content {
             flex-grow: 1;
-            padding: 6mm 0;
+            padding: 8mm 0;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
             z-index: 10;
-            overflow: hidden;
+            height: 100%;
         }
 
-        /* Cover Page Custom Styling */
+        /* Cover Page Styling */
         .page.cover-page {
             justify-content: space-between;
             align-items: center;
@@ -157,12 +153,12 @@
         }
 
         .cover-header {
-            margin-top: 5mm;
+            margin-top: 8mm;
         }
 
         .cover-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 34pt;
+            font-size: 38pt;
             font-weight: 700;
             color: #b45309;
             line-height: 1.1;
@@ -170,26 +166,26 @@
         }
 
         .cover-subtitle {
-            font-size: 22pt;
+            font-size: 26pt;
             font-weight: 700;
             color: #451a03;
             letter-spacing: 2px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .cover-cities {
             font-family: 'Fredoka', sans-serif;
-            font-size: 14pt;
+            font-size: 16pt;
             color: var(--text-muted);
             letter-spacing: 1px;
             border-bottom: 2px solid #b45309;
-            padding-bottom: 6px;
-            margin-bottom: 10px;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
             display: inline-block;
         }
 
         .cover-desc {
-            font-size: 12pt;
+            font-size: 13pt;
             color: #78350f;
             font-weight: 500;
         }
@@ -199,8 +195,8 @@
             height: 110mm;
             border-radius: var(--border-radius);
             overflow: hidden;
-            border: 5px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 6px solid white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .cover-image {
@@ -211,19 +207,18 @@
 
         .cover-footer {
             width: 85%;
-            margin-bottom: 5mm;
+            margin-bottom: 8mm;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
         }
 
         .name-box {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 2px dashed #b45309;
             border-radius: 8px;
-            font-size: 13pt;
+            font-size: 15pt;
             font-weight: bold;
             color: #451a03;
             background-color: rgba(255,255,255,0.6);
@@ -232,55 +227,55 @@
         /* Chapter Divider Page */
         .page.chapter-divider {
             justify-content: space-between;
-            padding: 15mm;
+            padding: 18mm;
         }
 
         .divider-title-group {
             text-align: center;
-            margin-top: 2mm;
+            margin-top: 5mm;
         }
 
         .divider-city-en {
             font-family: 'Fredoka', sans-serif;
-            font-size: 36pt;
+            font-size: 40pt;
             font-weight: 700;
             line-height: 1;
         }
 
         .divider-city-zh {
-            font-size: 24pt;
+            font-size: 28pt;
             font-weight: 700;
             margin-top: 5px;
         }
 
         .divider-tagline {
             font-family: 'Fredoka', sans-serif;
-            font-size: 11pt;
+            font-size: 12pt;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 12px;
             font-weight: 600;
         }
 
         .divider-desc-box {
-            margin: 15px 0;
-            padding: 15px;
+            margin: 20px 0;
+            padding: 18px;
             border-radius: var(--border-radius);
-            font-size: 11pt;
-            line-height: 1.5;
+            font-size: 12pt;
+            line-height: 1.6;
         }
 
         .divider-desc-en {
             font-weight: 500;
-            margin-bottom: 8px;
-            font-size: 11.5pt;
+            margin-bottom: 10px;
+            font-size: 13pt;
         }
 
         .divider-desc-zh {
             color: var(--text-muted);
             border-top: 1px dashed rgba(0,0,0,0.1);
-            padding-top: 8px;
-            font-size: 10pt;
+            padding-top: 10px;
+            font-size: 11pt;
         }
 
         .divider-image-container {
@@ -290,7 +285,6 @@
             overflow: hidden;
             border: 4px solid white;
             box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            margin-bottom: 2mm;
         }
 
         .divider-image {
@@ -321,242 +315,229 @@
         .page.chapter-divider .divider-tagline { color: var(--text-muted); }
         .page.chapter-divider .divider-desc-box { background-color: var(--theme-bg); border-left: 5px solid var(--theme-color); }
 
-        /* Intro Page Layout */
-        .intro-title {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 16pt;
-            color: #b45309;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #fcd34d;
-            padding-bottom: 4px;
-        }
-
-        .intro-box {
-            background-color: #fffbeb;
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid #f59e0b;
-            margin-bottom: 15px;
-            font-size: 10.5pt;
-            line-height: 1.5;
-        }
-
-        .intro-box-en {
-            font-weight: 500;
-            margin-bottom: 6px;
-            font-size: 11pt;
-            color: #78350f;
-        }
-
-        .intro-box-zh {
-            color: #b45309;
-            font-size: 9.5pt;
-        }
-
-        .table-title {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 15pt;
-            color: #1e293b;
-            margin-bottom: 10px;
-        }
-
-        /* Styled Table */
-        .dest-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 10pt;
-            margin-bottom: 15px;
-        }
-
-        .dest-table th {
-            background-color: #f1f5f9;
-            color: #1e293b;
-            text-align: left;
-            padding: 8px;
-            font-weight: 700;
-            border-bottom: 2px solid #cbd5e1;
-        }
-
-        .dest-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .dest-table tr:hover {
-            background-color: #f8fafc;
-        }
-
-        .dest-city-cell {
-            font-weight: bold;
-            color: #b45309;
-        }
-
-        /* Attraction Item Styling - Layout 3 per Page */
-        .attractions-list {
+        /* Attraction Item Styling - 1 Attraction per Page */
+        .attraction-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 4mm;
-            height: 100%;
             justify-content: space-between;
-        }
-
-        /* For 4 items on Sydney's last page, make gaps smaller */
-        .attractions-list.four-items {
-            gap: 2mm;
-        }
-
-        .attraction-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            height: 100%;
         }
 
         .attraction-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 13.5pt;
+            font-size: 20pt;
             font-weight: 700;
             color: var(--theme-color);
-            border-bottom: 1.5px solid #f1f5f9;
-            padding-bottom: 2px;
+            border-bottom: 2px solid var(--theme-color);
+            padding-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .attraction-title span.number {
             background-color: var(--theme-color);
             color: white;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10pt;
+            font-size: 14pt;
         }
 
+        .attraction-img-container {
+            width: 100%;
+            height: 80mm;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+            margin-bottom: 10px;
+        }
+
+        .attraction-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* English font doubled in size as requested: ~18-20pt */
         .attraction-desc-en {
-            font-size: 11pt;
+            font-size: 18.5pt;
             font-weight: 500;
-            line-height: 1.4;
+            line-height: 1.5;
             color: var(--text-dark);
             text-align: justify;
+            margin-bottom: 10px;
         }
 
         .attraction-desc-zh {
-            font-size: 9pt;
-            line-height: 1.35;
+            font-size: 11pt;
+            line-height: 1.5;
             color: var(--text-muted);
             text-align: justify;
+            background-color: #f8fafc;
+            border: 1px solid #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
 
         .attraction-funfact {
             background-color: var(--theme-bg);
-            border: 1.5px dashed #cbd5e1;
+            border: 1.5px dashed var(--theme-color);
             border-radius: 8px;
-            padding: 8px 10px;
-            margin-top: 2px;
+            padding: 10px 14px;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
         }
 
         .funfact-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 9pt;
+            font-size: 11pt;
             font-weight: 700;
             color: var(--theme-color);
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
             text-transform: uppercase;
         }
 
+        /* English font in fun fact doubled size: ~15pt */
         .funfact-text-en {
-            font-size: 10pt;
+            font-size: 15pt;
             font-weight: 600;
             color: #0f172a;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .funfact-text-zh {
-            font-size: 8.5pt;
+            font-size: 10.5pt;
             color: var(--text-muted);
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .attraction-source {
-            font-size: 7.5pt;
+            font-size: 8pt;
             color: var(--text-muted);
             text-align: right;
             font-style: italic;
-            margin-top: 1px;
+            margin-top: 3px;
         }
 
-        /* Challenge Page Styling */
-        .challenge-title {
+        /* Glow-worm Special Section Styling */
+        .glowworm-cover {
+            background: linear-gradient(135deg, #090d16 0%, #152238 100%);
+            color: #e2e8f0;
+        }
+
+        .glowworm-cover::before {
+            border: 2px solid #38bdf8;
+        }
+
+        .glowworm-title-group {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .glowworm-label {
             font-family: 'Fredoka', sans-serif;
-            font-size: 18pt;
-            color: #0f766e;
-            text-align: center;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #99f6e4;
-            padding-bottom: 6px;
+            font-size: 12pt;
+            color: #38bdf8;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        .challenge-intro {
-            font-size: 10pt;
-            color: var(--text-muted);
-            text-align: center;
+        .glowworm-title-en {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32pt;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 5px;
+        }
+
+        .glowworm-title-zh {
+            font-size: 22pt;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-top: 5px;
+        }
+
+        .glowworm-intro {
+            font-size: 12pt;
+            line-height: 1.6;
+            margin: 15px 0;
+            background-color: rgba(255,255,255,0.05);
+            border-left: 4px solid #38bdf8;
+            padding: 15px;
+            border-radius: 4px;
+            color: #f1f5f9;
+        }
+
+        .glowworm-card {
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 8px;
+            padding: 15px;
             margin-bottom: 15px;
         }
 
-        .questions-container {
+        .glowworm-card-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 14pt;
+            color: #38bdf8;
+            font-weight: 700;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 3px;
+        }
+
+        .glowworm-card-desc-en {
+            font-size: 14.5pt; /* Slightly smaller for fitting two on a page, but still very large */
+            font-weight: 500;
+            line-height: 1.5;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .glowworm-card-desc-zh {
+            font-size: 10.5pt;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* Drawing Box for Glow-worms */
+        .drawing-box-container {
+            width: 100%;
+            height: 90mm;
+            border: 2px dashed #38bdf8;
+            border-radius: var(--border-radius);
+            background-color: rgba(255,255,255,0.05);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            color: #94a3b8;
+            padding: 10px;
+            margin-top: 15px;
         }
 
-        .question-card {
-            background-color: #f0fdfa;
-            border: 1px solid #ccfbf1;
-            border-radius: 8px;
-            padding: 10px 12px;
-            position: relative;
-        }
-
-        .question-num {
-            position: absolute;
-            top: -9px;
-            left: 12px;
-            background-color: #0f766e;
-            color: white;
+        .drawing-box-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 8.5pt;
-            font-weight: bold;
-            padding: 1px 6px;
-            border-radius: 10px;
-        }
-
-        .question-text-en {
-            font-size: 11pt;
-            font-weight: 600;
-            color: #0f172a;
-            margin-top: 3px;
-            margin-bottom: 3px;
-        }
-
-        .question-text-zh {
-            font-size: 9.5pt;
-            color: #0d9488;
+            font-size: 13pt;
+            color: #38bdf8;
+            font-weight: 700;
             margin-bottom: 5px;
         }
 
-        .answer-line {
-            width: 100%;
-            height: 25px;
-            border-bottom: 1px dashed #99f6e4;
-            margin-top: 3px;
+        .drawing-box-desc {
+            font-size: 10pt;
+            text-align: center;
         }
 
         /* Back Cover Styling */
@@ -575,59 +556,59 @@
 
         .diary-section {
             width: 100%;
-            margin-top: 5mm;
+            margin-top: 8mm;
             text-align: left;
         }
 
         .diary-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 15pt;
+            font-size: 16pt;
             color: #0f766e;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border-bottom: 2px solid #99f6e4;
-            padding-bottom: 4px;
+            padding-bottom: 5px;
         }
 
         .writing-lines {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 8px;
+            gap: 20px;
+            margin-top: 15px;
         }
 
         .writing-line {
             border-bottom: 1px dashed #cbd5e1;
-            height: 22px;
+            height: 30px;
         }
 
         .back-closing {
-            margin-bottom: 5mm;
+            margin-bottom: 10mm;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .closing-banner {
             background-color: #0f766e;
             color: white;
             font-family: 'Fredoka', sans-serif;
-            font-size: 14pt;
+            font-size: 16pt;
             font-weight: bold;
-            padding: 8px 24px;
+            padding: 10px 30px;
             border-radius: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .closing-sub {
-            font-size: 12pt;
+            font-size: 13pt;
             font-weight: 700;
             color: #0f172a;
         }
 
         .stamp-decor {
-            font-size: 20pt;
-            margin-top: 5px;
+            font-size: 24pt;
+            margin-top: 10px;
         }
 
         /* Print styles */
@@ -655,7 +636,7 @@
                 border-radius: 0;
                 padding: 15mm 15mm !important;
             }
-            
+
             @page {
                 size: A4;
                 margin: 0;
@@ -687,58 +668,11 @@
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 1</span>
+                <span>Page 1 of 32</span>
             </div>
         </div>
     
-        <!-- PAGE 2: INTRO & TOC -->
-        <div class="page">
-            <div class="page-header">
-                <span>INTRODUCTION</span>
-                <span>GETTING READY</span>
-            </div>
-            <div class="page-content">
-                <h3 class="intro-title">如何使用這本小讀本 How to Use This Book</h3>
-                <div class="intro-box">
-                    <p class="intro-box-en">Each place has a Chinese story, simple English, and a fun fact. Read it before the trip, then look for the buildings, animals, and clues when you arrive.</p>
-                    <p class="intro-box-zh">每個景點都有中文故事、簡易英文與趣味小知識。旅行前可以先讀，抵達景點後再找找看書中提到的建築、動物或歷史線索。</p>
-                </div>
-                
-                <h3 class="table-title">我們要去哪裡？ Where Are We Going?</h3>
-                <table class="dest-table">
-                    <thead>
-                        <tr>
-                            <th>City 城市</th>
-                            <th>State 州</th>
-                            <th>Highlights 特色</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="dest-city-cell">Brisbane<br>布里斯本</td>
-                            <td>Queensland<br>昆士蘭州</td>
-                            <td>Bridges, ferries, koalas, sand island<br>河流、橋梁、無尾熊、沙島</td>
-                        </tr>
-                        <tr>
-                            <td class="dest-city-cell">Gold Coast<br>黃金海岸</td>
-                            <td>Queensland<br>昆士蘭州</td>
-                            <td>Beaches, theme parks, rainforest, glow-worms<br>沙灘、主題樂園、雨林、藍光蟲</td>
-                        </tr>
-                        <tr>
-                            <td class="dest-city-cell">Sydney<br>雪梨</td>
-                            <td>New South Wales<br>新南威爾斯州</td>
-                            <td>Harbour, Opera House, sandstone buildings<br>港口、歌劇院、歷史建築、公園</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="page-footer">
-                <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 2</span>
-            </div>
-        </div>
-    
-        <!-- PAGE 3: CHAPTER DIVIDER - BRISBANE -->
+        <!-- PAGE 2: CHAPTER DIVIDER - BRISBANE -->
         <div class="page chapter-divider brisbane-theme">
             <div class="divider-title-group">
                 <h2 class="divider-city-en">Brisbane</h2>
@@ -757,28 +691,33 @@
             
             <div class="page-footer">
                 <span>⭐ BRISBANE</span>
-                <span>Page 3</span>
+                <span>Page 2 of 32</span>
             </div>
         </div>
         
-        <!-- PAGE 4: BRISBANE ATTRACTIONS 1-3 -->
+        <!-- PAGE 3: BRISBANE ATTRACTION - 南岸公園 South Bank Parklands -->
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list">
-            
-                    <!-- Attraction Item 1 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">1</span>
                             南岸公園 South Bank Parklands
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1590233649603-4e8c3b9b4d47?auto=format&fit=crop&w=800&q=80" alt="南岸公園 South Bank Parklands" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">South Bank was once an area of docks and factories. Brisbane held World Expo 88 here. After the Expo, people wanted a public park, so South Bank Parklands opened in 1992. The wooden Nepalese Peace Pagoda remains from the Expo.</p>
                         <p class="attraction-desc-zh">南岸過去曾是碼頭與工業區。1988年，布里斯本在這裡舉辦世界博覽會World Expo 88，許多國家來展示文化與科技。博覽會結束後，居民希望土地成為大家都能使用的公園，因此南岸公園在1992年開放。園內的尼泊爾和平塔，是博覽會留下的重要木造建築。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Streets Beach is a man-made beach in the city. We can swim and see city buildings at the same time.</p>
@@ -786,16 +725,37 @@
                         </div>
                         <div class="attraction-source">Source: State Library of Queensland</div>
                     </div>
-                
-                    <!-- Attraction Item 2 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ BRISBANE</span>
+                <span>Page 3 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 4: BRISBANE ATTRACTION - 故事橋 Story Bridge -->
+        <div class="page brisbane-theme">
+            <div class="page-header">
+                <span class="city-tag">BRISBANE</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">2</span>
                             故事橋 Story Bridge
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1549849171-09f62448c5dd?auto=format&fit=crop&w=800&q=80" alt="故事橋 Story Bridge" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Story Bridge is named after John Douglas Story. “Story” was his family name. He strongly supported the plan for the bridge. Work began in 1935, and the bridge opened in 1940. Workers built from both sides of the river and met in the middle.</p>
                         <p class="attraction-desc-zh">故事橋不是因為橋上有很多故事而得名。Story是John Douglas Story的姓氏。他是重要公務員，也長期支持興建這座橋。據報導，1937年政府宣布以他命名時，個性低調的Story先生驚訝得昏倒了。橋在1935年動工、1940年開放，工人從河的兩岸同時建造，最後在中央接合。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">The bridge has about 1.25 million rivets. These strong metal pins hold the steel together.</p>
@@ -803,16 +763,37 @@
                         </div>
                         <div class="attraction-source">Source: Brisbane City Council · Queensland State Archives</div>
                     </div>
-                
-                    <!-- Attraction Item 3 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ BRISBANE</span>
+                <span>Page 4 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 5: BRISBANE ATTRACTION - 龍柏無尾熊保護區 Lone Pine Koala Sanctuary -->
+        <div class="page brisbane-theme">
+            <div class="page-header">
+                <span class="city-tag">BRISBANE</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">3</span>
                             龍柏無尾熊保護區 Lone Pine Koala Sanctuary
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80" alt="龍柏無尾熊保護區 Lone Pine Koala Sanctuary" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">“Lone Pine” means one pine tree standing alone. Claude Reid opened the sanctuary in 1927, when many koalas were killed for fur. It began with two koalas named Jack and Jill.</p>
                         <p class="attraction-desc-zh">Lone Pine意思是「孤單的一棵松樹」，名稱來自土地上原本單獨生長的一棵澳洲貝殼杉。Claude Reid在1927年建立保護區，當時許多無尾熊因毛皮而遭獵捕。他希望提供安全的家。保護區剛成立時只有兩隻無尾熊，名字叫Jack和Jill。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">It is the world’s oldest koala sanctuary. Visitors can watch koalas closely, but they do not hold them.</p>
@@ -820,33 +801,37 @@
                         </div>
                         <div class="attraction-source">Source: Lone Pine Koala Sanctuary</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ BRISBANE</span>
-                <span>Page 4</span>
+                <span>Page 5 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 5: BRISBANE ATTRACTIONS 4-6 -->
+        <!-- PAGE 6: BRISBANE ATTRACTION - 庫薩山觀景台 Mount Coot-tha Lookout -->
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list">
-            
-                    <!-- Attraction Item 4 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">4</span>
                             庫薩山觀景台 Mount Coot-tha Lookout
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=800&q=80" alt="庫薩山觀景台 Mount Coot-tha Lookout" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">The name Mount Coot-tha comes from “Kuta,” meaning a place of wild honey. Native stingless bees lived here. Europeans once called it One Tree Hill because surveyors left one tree as a marker. The name changed to Mount Coot-tha in 1883.</p>
                         <p class="attraction-desc-zh">Mount Coot-tha的名稱來自傳統語言Kuta，意思大約是「野生蜂蜜之地」。過去這裡有很多不會螫人的原生蜜蜂。歐洲人曾把山叫作One Tree Hill，因為測量人員清除山頂附近的樹，只留一棵作為測量標記。1883年才改回Mount Coot-tha。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">From the lookout, we can see Brisbane and, on a clear day, Moreton Bay.</p>
@@ -854,16 +839,37 @@
                         </div>
                         <div class="attraction-source">Source: Museum of Brisbane</div>
                     </div>
-                
-                    <!-- Attraction Item 5 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ BRISBANE</span>
+                <span>Page 6 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 7: BRISBANE ATTRACTION - 昆士蘭博物館 Queensland Museum -->
+        <div class="page brisbane-theme">
+            <div class="page-header">
+                <span class="city-tag">BRISBANE</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">5</span>
                             昆士蘭博物館 Queensland Museum
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1501290741922-b56c0d0974cf?auto=format&fit=crop&w=800&q=80" alt="昆士蘭博物館 Queensland Museum" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Queensland Museum began in 1862. It collected animals, plants, rocks, fossils, and cultural objects. It moved to South Bank in 1986. The museum tells stories from dinosaur times to today.</p>
                         <p class="attraction-desc-zh">昆士蘭博物館成立於1862年，收集與研究昆士蘭的動物、植物、岩石、化石和文化物品。博物館搬過幾次家，1986年才來到南岸。館藏帶我們從恐龍時代一路認識到現代的昆士蘭。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Muttaburrasaurus fossils were found in Queensland. The dinosaur was named after the town of Muttaburra.</p>
@@ -871,16 +877,37 @@
                         </div>
                         <div class="attraction-source">Source: Queensland Museum</div>
                     </div>
-                
-                    <!-- Attraction Item 6 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ BRISBANE</span>
+                <span>Page 7 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 8: BRISBANE ATTRACTION - 布里斯本河與城市貓船 Brisbane River and CityCat -->
+        <div class="page brisbane-theme">
+            <div class="page-header">
+                <span class="city-tag">BRISBANE</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">6</span>
                             布里斯本河與城市貓船 Brisbane River and CityCat
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80" alt="布里斯本河與城市貓船 Brisbane River and CityCat" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">A CityCat is not a city cat! The name comes from “city” and “catamaran.” A catamaran has two hulls. CityCats began in 1996. They are public transport for workers, students, and visitors.</p>
                         <p class="attraction-desc-zh">CityCat不是「城市裡的貓」，而是city和catamaran的組合。Catamaran是雙體船，船底有兩個部分。第一批CityCat在1996年開始行駛，不只是觀光船，也是居民上班、上學使用的公共交通。許多船以河岸的原住民族地名命名。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">After the 2011 flood, one boat was named Spirit of Brisbane to remember the city’s helpful spirit.</p>
@@ -888,33 +915,37 @@
                         </div>
                         <div class="attraction-source">Source: RiverCity Ferries</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ BRISBANE</span>
-                <span>Page 5</span>
+                <span>Page 8 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 6: BRISBANE ATTRACTIONS 7-9 -->
+        <!-- PAGE 9: BRISBANE ATTRACTION - 摩頓島（穆爾甘平）Mulgumpin (Moreton Island) -->
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list">
-            
-                    <!-- Attraction Item 7 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">7</span>
                             摩頓島（穆爾甘平）Mulgumpin (Moreton Island)
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="摩頓島（穆爾甘平）Mulgumpin (Moreton Island)" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Moreton Island’s traditional name is Mulgumpin, meaning “place of sandhills.” It is the traditional home of the Quandamooka People and the world’s third-largest sand island. It has dunes, lakes, beaches, forests, old forts, and Queensland’s oldest lighthouse.</p>
                         <p class="attraction-desc-zh">摩頓島位在布里斯本外海，傳統名稱是Mulgumpin，意思是「沙丘之地」。它是Quandamooka族人數千年來的家園，也是世界第三大沙島。島上有高大的沙丘、淡水湖、海灘、森林、二次世界大戰海防遺跡，以及昆士蘭最古老的燈塔。今天國家公園由Quandamooka傳統土地所有者與昆士蘭公園管理單位共同管理。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Fifteen old ships were sunk near Tangalooma to make a safe anchorage. They later became an artificial reef and a home for marine life.</p>
@@ -922,16 +953,37 @@
                         </div>
                         <div class="attraction-source">Source: Queensland Parks · Tourism Australia</div>
                     </div>
-                
-                    <!-- Attraction Item 8 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ BRISBANE</span>
+                <span>Page 9 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 10: BRISBANE ATTRACTION - 布里斯本與高雄：姐妹市 Brisbane and Kaohsiung -->
+        <div class="page brisbane-theme">
+            <div class="page-header">
+                <span class="city-tag">BRISBANE</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">8</span>
                             布里斯本與高雄：姐妹市 Brisbane and Kaohsiung
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80" alt="布里斯本與高雄：姐妹市 Brisbane and Kaohsiung" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Brisbane and Kaohsiung became sister cities on 9 September 1997. Sister cities are international friends. Both cities have important rivers, harbours, business, and industry. They share ideas about waterfronts, city planning, trade, education, health, tourism, and culture.</p>
                         <p class="attraction-desc-zh">布里斯本和高雄在1997年9月9日正式成為姐妹市。姐妹市就像兩座城市成為國際朋友，彼此分享經驗。兩座城市都有河流或港灣，也是重要的港口與工商城市，因此可在港灣與水岸開發、都市更新、經貿投資、教育、醫療、觀光、文化和人員交流等方面合作。2022年兩市慶祝締盟25週年，高雄的重要建築還點亮布里斯本代表色。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Sister cities do not have to look the same. They promise to learn from each other and build a long friendship.</p>
@@ -939,16 +991,37 @@
                         </div>
                         <div class="attraction-source">Source: Brisbane City Council · 高雄市政府</div>
                     </div>
-                
-                    <!-- Attraction Item 9 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ BRISBANE</span>
+                <span>Page 10 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 11: BRISBANE ATTRACTION - 昆士蘭大學 The University of Queensland -->
+        <div class="page brisbane-theme">
+            <div class="page-header">
+                <span class="city-tag">BRISBANE</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">9</span>
                             昆士蘭大學 The University of Queensland
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="昆士蘭大學 The University of Queensland" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">The University of Queensland is called UQ. It was founded in 1909. Its main St Lucia campus sits beside the Brisbane River. The Great Court has colourful sandstone walls and more than 1,200 carvings.</p>
                         <p class="attraction-desc-zh">昆士蘭大學簡稱UQ，1909年由昆士蘭州人民建立，是布里斯本重要的大學。主要的St Lucia校區位在布里斯本河畔。校園中央的大中庭Great Court由不同顏色的砂岩建成，牆上有超過1,200件石雕，內容包括昆士蘭歷史、動植物、人物和學術傳統。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Look closely at the Great Court. We may find plants, animals, people, and funny stone faces.</p>
@@ -956,16 +1029,15 @@
                         </div>
                         <div class="attraction-source">Source: University of Queensland · UQ Community Report</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ BRISBANE</span>
-                <span>Page 6</span>
+                <span>Page 11 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 7: CHAPTER DIVIDER - GOLD COAST -->
+        <!-- PAGE 12: CHAPTER DIVIDER - GOLD COAST -->
         <div class="page chapter-divider goldcoast-theme">
             <div class="divider-title-group">
                 <h2 class="divider-city-en">Gold Coast</h2>
@@ -984,28 +1056,33 @@
             
             <div class="page-footer">
                 <span>⭐ GOLD COAST</span>
-                <span>Page 7</span>
+                <span>Page 12 of 32</span>
             </div>
         </div>
         
-        <!-- PAGE 8: GOLD COAST ATTRACTIONS 1-3 -->
+        <!-- PAGE 13: GOLD COAST ATTRACTION - 衝浪者天堂 Surfers Paradise -->
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list">
-            
-                    <!-- Attraction Item 1 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">1</span>
                             衝浪者天堂 Surfers Paradise
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1544913776-90c1223073a3?auto=format&fit=crop&w=800&q=80" alt="衝浪者天堂 Surfers Paradise" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">This place was once called Elston. Jim Cavill opened the Surfers Paradise Hotel in the 1920s. The town changed its name to Surfers Paradise in 1933. Cavill Avenue is named after Jim Cavill.</p>
                         <p class="attraction-desc-zh">這裡原本叫Elston。1920年代，Jim Cavill開設Surfers Paradise Hotel，吸引遊客來度假。「衝浪者天堂」比Elston更讓人想到海灘與假期，因此1933年正式改名。主要道路Cavill Avenue也以Jim Cavill命名。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Gold Coast Meter Maids once put coins into parking meters to help visitors avoid fines.</p>
@@ -1013,16 +1090,37 @@
                         </div>
                         <div class="attraction-source">Source: City of Gold Coast</div>
                     </div>
-                
-                    <!-- Attraction Item 2 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ GOLD COAST</span>
+                <span>Page 13 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 14: GOLD COAST ATTRACTION - 可倫賓野生動物保護區 Currumbin Wildlife Sanctuary -->
+        <div class="page goldcoast-theme">
+            <div class="page-header">
+                <span class="city-tag">GOLD COAST</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">2</span>
                             可倫賓野生動物保護區 Currumbin Wildlife Sanctuary
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=800&q=80" alt="可倫賓野生動物保護區 Currumbin Wildlife Sanctuary" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Alex Griffiths grew flowers. Rainbow lorikeets came to eat them, so he offered food in another place. The colourful birds attracted visitors. He opened Currumbin Bird Sanctuary in 1947. A wildlife hospital opened in 1989.</p>
                         <p class="attraction-desc-zh">花農Alex Griffiths發現彩虹吸蜜鸚鵡常來吃花。他沒有趕走牠們，而是準備食物吸引牠們到另一處。彩色鳥群也吸引居民和遊客，於是他在1947年開放Currumbin Bird Sanctuary。後來保護區照顧更多動物，1989年成立野生動物醫院。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">A small plan to protect flowers grew into a famous wildlife sanctuary.</p>
@@ -1030,16 +1128,37 @@
                         </div>
                         <div class="attraction-source">Source: Currumbin Wildlife Sanctuary</div>
                     </div>
-                
-                    <!-- Attraction Item 3 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ GOLD COAST</span>
+                <span>Page 14 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 15: GOLD COAST ATTRACTION - 華納兄弟電影世界 Warner Bros. Movie World -->
+        <div class="page goldcoast-theme">
+            <div class="page-header">
+                <span class="city-tag">GOLD COAST</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">3</span>
                             華納兄弟電影世界 Warner Bros. Movie World
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="華納兄弟電影世界 Warner Bros. Movie World" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Movie World opened in 1991 beside real film studios. Early attractions showed how pretend explosions, car chases, and stunts were made. Movie stars and Bugs Bunny joined the opening celebration.</p>
                         <p class="attraction-desc-zh">電影世界在1991年開放，旁邊有真正的電影攝影棚。早期設施會教遊客如何製作假爆炸、飛車和動作特效。開幕時有Clint Eastwood等明星參加，兔寶寶Bugs Bunny也一起出席特別的剪綵儀式。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Movie stunts are carefully planned and performed by trained people.</p>
@@ -1047,33 +1166,37 @@
                         </div>
                         <div class="attraction-source">Source: Movie World</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ GOLD COAST</span>
-                <span>Page 8</span>
+                <span>Page 15 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 9: GOLD COAST ATTRACTIONS 4-6 -->
+        <!-- PAGE 16: GOLD COAST ATTRACTION - 海洋世界 Sea World -->
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list">
-            
-                    <!-- Attraction Item 4 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">4</span>
                             海洋世界 Sea World
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=800&q=80" alt="海洋世界 Sea World" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Sea World began as a water-ski show. It moved to The Spit and opened in 1971. Later, it added marine animals, learning activities, rescue work, and rides.</p>
                         <p class="attraction-desc-zh">Sea World最初是Keith Williams經營的水上滑水表演。1971年搬到The Spit並開放，後來加入海洋動物展示、教育、救援復健和遊樂設施。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">One goal of wildlife rescue is to return healthy wild animals to nature when possible.</p>
@@ -1081,16 +1204,37 @@
                         </div>
                         <div class="attraction-source">Source: National Film and Sound Archive</div>
                     </div>
-                
-                    <!-- Attraction Item 5 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ GOLD COAST</span>
+                <span>Page 16 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 17: GOLD COAST ATTRACTION - Q1大樓與SkyPoint觀景台 -->
+        <div class="page goldcoast-theme">
+            <div class="page-header">
+                <span class="city-tag">GOLD COAST</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">5</span>
                             Q1大樓與SkyPoint觀景台
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Q1大樓與SkyPoint觀景台" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Q1 means “Queensland Number One.” It was completed in 2005 and is about 322.5 metres tall, including its spire. Its shape was inspired by the Sydney Olympic torch and the Sydney Opera House.</p>
                         <p class="attraction-desc-zh">Q1是Queensland Number One的縮寫。大樓在2005年完工，包括尖塔高約322.5公尺。外形受到2000年雪梨奧運火炬與雪梨歌劇院啟發。從SkyPoint可以看到海灘、城市與內陸山區。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">The Q1 spire is about 93 metres long, but it looks like a thin needle from the ground.</p>
@@ -1098,16 +1242,37 @@
                         </div>
                         <div class="attraction-source">Source: SkyPoint</div>
                     </div>
-                
-                    <!-- Attraction Item 6 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ GOLD COAST</span>
+                <span>Page 17 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 18: GOLD COAST ATTRACTION - 春溪國家公園與天然橋 Springbrook and Natural Bridge -->
+        <div class="page goldcoast-theme">
+            <div class="page-header">
+                <span class="city-tag">GOLD COAST</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">6</span>
                             春溪國家公園與天然橋 Springbrook and Natural Bridge
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80" alt="春溪國家公園與天然橋 Springbrook and Natural Bridge" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Springbrook was shaped by the Tweed volcano about 23 million years ago. Rain and rivers later made valleys, cliffs, and waterfalls. Natural Bridge was made when water slowly wore away the rock and formed a cave.</p>
                         <p class="attraction-desc-zh">春溪地形與約2,300萬年前的Tweed火山有關。火山停止後，雨水與河流慢慢切割土地，形成山谷、懸崖與瀑布。這裡的森林屬於澳洲岡瓦納雨林世界遺產。天然橋不是人造橋，而是瀑布長時間侵蝕岩石，形成洞穴與上方石拱。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">By day we see a waterfall. After dark, the same cave may look like a tiny starry sky.</p>
@@ -1115,84 +1280,83 @@
                         </div>
                         <div class="attraction-source">Source: Queensland Parks</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ GOLD COAST</span>
-                <span>Page 9</span>
+                <span>Page 18 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 10: GOLD COAST ATTRACTIONS 7-9 -->
-        <div class="page goldcoast-theme">
-            <div class="page-header">
-                <span class="city-tag">GOLD COAST</span>
-                <span>EXPLORER GUIDE</span>
+        <!-- PAGE 19: SPECIAL FEATURE - GLOW-WORMS (PART 1) -->
+        <div class="page glowworm-cover">
+            <div class="page-header" style="color: #94a3b8; border-bottom: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>GOLD COAST SPECIAL</span>
+                <span>BIOLUMINESCENCE EXPLORATION</span>
             </div>
-            <div class="page-content">
-                <div class="attractions-list">
             
-                    <!-- Attraction Item 7 -->
-                    <div class="attraction-item">
-                        <h4 class="attraction-title">
-                            <span class="number">7</span>
-                            藍光蟲 Glow-worms：不是蟲，也不是螢火蟲
-                        </h4>
-                        <p class="attraction-desc-en">A glow-worm is not a worm and not a firefly. It is the larva of a tiny fungus gnat. The Springbrook species is Arachnocampa flava. It likes dark, quiet, wet caves and rainforest walls.</p>
-                        <p class="attraction-desc-zh">澳洲俗稱的glow-worm並不是真正的蠕蟲，也不是螢火蟲，而是一種小型蕈蚋（fungus gnat）的幼蟲。春溪常見的種類是Arachnocampa flava，主要分布在昆士蘭東南部。幼蟲喜歡黑暗、安靜而潮濕的洞穴、岩壁或瀑布附近，因為牠們的身體與黏絲很容易乾掉。</p>
-                        
-                        <div class="attraction-funfact">
-                            <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
-                            <p class="funfact-text-en">The larva is the stage that glows brightly. Later, it becomes a small flying insect.</p>
-                            <p class="funfact-text-zh">只有幼蟲階段會發出明顯的光；長大後會變成小飛蟲。</p>
-                        </div>
-                        <div class="attraction-source">Source: Queensland Parks · Visit Brisbane</div>
-                    </div>
+            <div class="page-content" style="justify-content: flex-start;">
+                <div class="glowworm-title-group">
+                    <span class="glowworm-label">★ Special Feature ★</span>
+                    <h2 class="glowworm-title-en">GLOW-WORMS</h2>
+                    <h3 class="glowworm-title-zh">藍光蟲生態探秘</h3>
+                </div>
                 
-                    <!-- Attraction Item 8 -->
-                    <div class="attraction-item">
-                        <h4 class="attraction-title">
-                            <span class="number">8</span>
-                            藍光蟲為什麼發光？ Why Do Glow-worms Glow?
-                        </h4>
-                        <p class="attraction-desc-en">Glow-worms make blue-green light by bioluminescence. The light attracts tiny flying insects. A larva hangs sticky silk threads from the ceiling. When an insect gets caught, the larva pulls up the thread and eats it.</p>
-                        <p class="attraction-desc-zh">藍光蟲會利用生物發光（bioluminescence）製造藍綠色微光。這盞「身體小燈」不是為了照路，而是用來吸引小飛蟲。牠會從洞頂垂下帶有黏液的細絲，就像迷你釣魚線。小昆蟲被光吸引、黏在線上後，幼蟲便把細絲拉回去進食。通常越飢餓的幼蟲，可能發出越明顯的光。</p>
-                        
-                        <div class="attraction-funfact">
-                            <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
-                            <p class="funfact-text-en">The cave looks like a starry sky, but every light is a tiny hunting lamp.</p>
-                            <p class="funfact-text-zh">看起來像浪漫星空，其實每一點光都是一盞小小的「捕食燈」。</p>
-                        </div>
-                        <div class="attraction-source">Source: Glow Worm Caves Tamborine Mountain · UQ research</div>
-                    </div>
+                <div class="glowworm-intro">
+                    In the quiet, dark, and wet caves of Springbrook rainforest, tiny living lights glow like blue-green stars in the dark. Let's learn about these magical creatures!
+                </div>
                 
-                    <!-- Attraction Item 9 -->
-                    <div class="attraction-item">
-                        <h4 class="attraction-title">
-                            <span class="number">9</span>
-                            如何保護藍光蟲 How to Protect Glow-worms
-                        </h4>
-                        <p class="attraction-desc-en">Be quiet and stay on the path. Do not touch the glow-worms or cave walls. Do not shine a torch or camera flash at them. Bright light can stop their glow and feeding. Let your eyes get used to the dark.</p>
-                        <p class="attraction-desc-zh">觀察藍光蟲時要保持安靜、留在步道上，不能觸摸洞壁或藍光蟲，也不能把手電筒直接照向牠們。強光與相機閃光燈可能讓牠們停止發光、打斷捕食。應讓眼睛慢慢適應黑暗；需要照路時，只將低亮度燈光朝地面。夜間雨林濕滑，也應由大人陪同或參加合適的導覽。</p>
-                        
-                        <div class="attraction-funfact">
-                            <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
-                            <p class="funfact-text-en">Sometimes the best picture is the one we keep in our memory. Protecting the glow-worms is more important than using a flash.</p>
-                            <p class="funfact-text-zh">最好的照片有時就是用眼睛和記憶拍下來，因為保護藍光蟲比使用閃光燈更重要。</p>
-                        </div>
-                        <div class="attraction-source">Source: Queensland Parks visitor guidance</div>
-                    </div>
+                <!-- Glow-worm 1: Not a worm -->
+                <div class="glowworm-card">
+                    <h4 class="glowworm-card-title">💡 1. 藍光蟲 Glow-worms：不是蟲，也不是螢火蟲</h4>
+                    <p class="glowworm-card-desc-en">A glow-worm is not a worm and not a firefly. It is the larva of a tiny fungus gnat. The Springbrook species is Arachnocampa flava. It likes dark, quiet, wet caves and rainforest walls.</p>
+                    <p class="glowworm-card-desc-zh">澳洲俗稱的glow-worm並不是真正的蠕蟲，也不是螢火蟲，而是一種小型蕈蚋（fungus gnat）的幼蟲。春溪常見的種類是Arachnocampa flava，主要分布在昆士蘭東南部。幼蟲喜歡黑暗、安靜而潮濕的洞穴、岩壁或瀑布附近，因為牠們的身體與黏絲很容易乾掉。</p>
+                </div>
                 
+                <!-- Glow-worm 2: Why do they glow -->
+                <div class="glowworm-card" style="margin-bottom: 0;">
+                    <h4 class="glowworm-card-title">💡 2. 藍光蟲為什麼發光？ Why Do Glow-worms Glow?</h4>
+                    <p class="glowworm-card-desc-en">Glow-worms make blue-green light by bioluminescence. The light attracts tiny flying insects. A larva hangs sticky silk threads from the ceiling. When an insect gets caught, the larva pulls up the thread and eats it.</p>
+                    <p class="glowworm-card-desc-zh">藍光蟲會利用生物發光（bioluminescence）製造藍綠色微光。這盞「身體小燈」不是為了照路，而是用來吸引小飛蟲。牠會從洞頂垂下帶有黏液的細絲，就像迷你釣魚線。小昆蟲被光吸引、黏在線上後，幼蟲便把細絲拉回去進食。通常越飢餓的幼蟲，可能發出越明顯的光。</p>
                 </div>
             </div>
-            <div class="page-footer">
-                <span>⭐ GOLD COAST</span>
-                <span>Page 10</span>
+            
+            <div class="page-footer" style="color: #94a3b8; border-top: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>⭐ GLOW-WORMS SPECIAL</span>
+                <span>Page 19 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 11: CHAPTER DIVIDER - SYDNEY -->
+        <!-- PAGE 20: SPECIAL FEATURE - GLOW-WORMS (PART 2) -->
+        <div class="page glowworm-cover">
+            <div class="page-header" style="color: #94a3b8; border-bottom: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>GOLD COAST SPECIAL</span>
+                <span>ECO CONSERVATION</span>
+            </div>
+            
+            <div class="page-content" style="justify-content: flex-start;">
+                <!-- Glow-worm 3: How to protect -->
+                <div class="glowworm-card">
+                    <h4 class="glowworm-card-title">💡 3. 如何保護藍光蟲 How to Protect Glow-worms</h4>
+                    <p class="glowworm-card-desc-en">Be quiet and stay on the path. Do not touch the glow-worms or cave walls. Do not shine a torch or camera flash at them. Bright light can stop their glow and feeding. Let your eyes get used to the dark.</p>
+                    <p class="glowworm-card-desc-zh">觀察藍光蟲時要保持安靜、留在步道上，不能觸摸洞壁或藍光蟲，也不能把手電筒直接照向牠們。強光與相機閃光燈可能讓牠們停止發光、打斷捕食。應讓眼睛慢慢適應黑暗；需要照路時，只將低亮度燈光朝地面。夜間雨林濕滑，也應由大人陪同或參加合適的導覽。</p>
+                </div>
+                
+                <!-- Interactive Drawing Activity -->
+                <div class="drawing-box-container">
+                    <div class="drawing-box-title">🎨 Draw Your Own Glow-worm Cave!</div>
+                    <div class="drawing-box-title" style="font-size: 11pt;">畫出你的藍光蟲洞穴！</div>
+                    <p class="drawing-box-desc" style="margin-top: 8px;">Use crayons to draw the dark cave and add glowing blue stars using light blue or yellow! (可以畫出黑暗洞穴與點點藍光蟲！)</p>
+                </div>
+            </div>
+            
+            <div class="page-footer" style="color: #94a3b8; border-top: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>⭐ GLOW-WORMS SPECIAL</span>
+                <span>Page 20 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 21: CHAPTER DIVIDER - SYDNEY -->
         <div class="page chapter-divider sydney-theme">
             <div class="divider-title-group">
                 <h2 class="divider-city-en">Sydney</h2>
@@ -1211,28 +1375,33 @@
             
             <div class="page-footer">
                 <span>⭐ SYDNEY</span>
-                <span>Page 11</span>
+                <span>Page 21 of 32</span>
             </div>
         </div>
         
-        <!-- PAGE 12: SYDNEY ATTRACTIONS 1-3 -->
+        <!-- PAGE 22: SYDNEY ATTRACTION - 雪梨歌劇院 Sydney Opera House -->
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list">
-            
-                    <!-- Attraction Item 1 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">1</span>
                             雪梨歌劇院 Sydney Opera House
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80" alt="雪梨歌劇院 Sydney Opera House" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Australia held a competition for a new opera house. A 38-year-old Danish architect, Jørn Utzon, won with design number 218. He shaped the roofs like pieces cut from one giant ball. Building began in 1959, and the Opera House opened in 1973.</p>
                         <p class="attraction-desc-zh">1950年代，澳洲舉辦新歌劇院設計比賽。來自丹麥、當時38歲的Jørn Utzon以編號218的作品獲選。白色屋頂很難建造，後來他想到把屋頂設計成同一顆巨大球體切下的不同部分。工程1959年開始，1973年由伊莉莎白二世女王正式開放。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">The roofs have more than one million white and cream tiles. Their colour changes with the sunlight.</p>
@@ -1240,16 +1409,37 @@
                         </div>
                         <div class="attraction-source">Source: Sydney Opera House</div>
                     </div>
-                
-                    <!-- Attraction Item 2 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ SYDNEY</span>
+                <span>Page 22 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 23: SYDNEY ATTRACTION - 雪梨港灣大橋 Sydney Harbour Bridge -->
+        <div class="page sydney-theme">
+            <div class="page-header">
+                <span class="city-tag">SYDNEY</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">2</span>
                             雪梨港灣大橋 Sydney Harbour Bridge
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1524820197278-540916411e20?auto=format&fit=crop&w=800&q=80" alt="雪梨港灣大橋 Sydney Harbour Bridge" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">The bridge arch looks like a coat hanger, so people call it “The Coathanger.” Work began in 1923, and the bridge opened in 1932. At the opening, Francis de Groot rode forward on a horse and cut the ribbon with a sword before the ceremony.</p>
                         <p class="attraction-desc-zh">大橋的鋼鐵拱形像衣架，因此暱稱The Coathanger。工程1923年開始，兩邊拱架從港口兩岸向中央延伸，1932年開放。開幕時，Francis de Groot突然騎馬衝上前，用劍先把緞帶砍斷，只好把緞帶接回去再完成儀式。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">The bridge has about six million rivets. Seven circus elephants and a small pony once walked across it.</p>
@@ -1257,16 +1447,37 @@
                         </div>
                         <div class="attraction-source">Source: BridgeClimb Sydney</div>
                     </div>
-                
-                    <!-- Attraction Item 3 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ SYDNEY</span>
+                <span>Page 23 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 24: SYDNEY ATTRACTION - 環形碼頭 Circular Quay -->
+        <div class="page sydney-theme">
+            <div class="page-header">
+                <span class="city-tag">SYDNEY</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">3</span>
                             環形碼頭 Circular Quay
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1549918830-11670403c488?auto=format&fit=crop&w=800&q=80" alt="環形碼頭 Circular Quay" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">A quay is a place where boats stop, and “quay” sounds like “key.” It was first called Semi-circular Quay because of its shape. Before the British arrived, this was Cadigal Country. The First Fleet arrived nearby in 1788.</p>
                         <p class="attraction-desc-zh">Quay是碼頭，發音和key相同。碼頭在1837到1855年間興建，最初因石造岸線呈半圓形而叫Semi-circular Quay。英國人到來前，這裡是Cadigal族人的生活範圍；1788年第一艦隊抵達附近Sydney Cove後，殖民城市逐漸由此向外發展。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">It is called Circular Quay, but it is not a full circle.</p>
@@ -1274,33 +1485,37 @@
                         </div>
                         <div class="attraction-source">Source: Dictionary of Sydney</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ SYDNEY</span>
-                <span>Page 12</span>
+                <span>Page 24 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 13: SYDNEY ATTRACTIONS 4-6 -->
+        <!-- PAGE 25: SYDNEY ATTRACTION - 塔龍加動物園 Taronga Zoo -->
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list">
-            
-                    <!-- Attraction Item 4 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">4</span>
                             塔龍加動物園 Taronga Zoo
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?auto=format&fit=crop&w=800&q=80" alt="塔龍加動物園 Taronga Zoo" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">“Taronga” was chosen to mean a sea view or beautiful view. Sydney’s old zoo became too small, so it moved from Moore Park to Mosman. Taronga Zoo opened in 1916 and now works on conservation, science, and education.</p>
                         <p class="attraction-desc-zh">Taronga這個名稱用來表達「海景」或「美麗景色」，因為動物園從雪梨港北岸望向港灣。雪梨原本的動物園位於Moore Park，後來因空間不足搬到Mosman，1916年開放。今天動物園也重視保育、科學和教育。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Many visitors take a ferry from Circular Quay. The boat ride is part of the adventure.</p>
@@ -1308,16 +1523,37 @@
                         </div>
                         <div class="attraction-source">Source: Taronga Zoo</div>
                     </div>
-                
-                    <!-- Attraction Item 5 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ SYDNEY</span>
+                <span>Page 25 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 26: SYDNEY ATTRACTION - 邦代海灘 Bondi Beach -->
+        <div class="page sydney-theme">
+            <div class="page-header">
+                <span class="city-tag">SYDNEY</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">5</span>
                             邦代海灘 Bondi Beach
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" alt="邦代海灘 Bondi Beach" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">“Bondi” is commonly believed to come from the Dharawal language and may describe waves hitting rocks. Bondi became a public beach in 1882. Australia’s first recorded surf lifesaving club began here in 1907.</p>
                         <p class="attraction-desc-zh">Bondi一般認為可能來自Dharawal語言，意思是海水拍打岩石或海浪的聲音，但不同資料仍有不同解釋。海灘在1882年成為公共海灘。1907年，澳洲第一個有正式紀錄的海浪救生俱樂部在此成立。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Swim between the red and yellow flags. This is the area watched by lifesavers.</p>
@@ -1325,16 +1561,37 @@
                         </div>
                         <div class="attraction-source">Source: NSW Environment and Heritage</div>
                     </div>
-                
-                    <!-- Attraction Item 6 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ SYDNEY</span>
+                <span>Page 26 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 27: SYDNEY ATTRACTION - 達令港 Darling Harbour -->
+        <div class="page sydney-theme">
+            <div class="page-header">
+                <span class="city-tag">SYDNEY</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">6</span>
                             達令港 Darling Harbour
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1549637642-9018f0dbab12?auto=format&fit=crop&w=800&q=80" alt="達令港 Darling Harbour" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">The harbour was once called Long Cove and Cockle Bay. In 1826, Governor Ralph Darling gave it his family name. It was once a busy place for ships, warehouses, and factories. The new visitor area opened in 1988.</p>
                         <p class="attraction-desc-zh">這個港灣曾叫Long Cove，也因岸邊貝殼而叫Cockle Bay。1826年，總督Ralph Darling用自己的姓氏重新命名，所以Darling在這裡是人名。過去它是船舶、倉庫和工廠聚集的工業港；重新規劃後，新的達令港在1988年開放。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Australia’s first working steam engine began operating in this area in 1815.</p>
@@ -1342,33 +1599,37 @@
                         </div>
                         <div class="attraction-source">Source: Darling Harbour</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ SYDNEY</span>
-                <span>Page 13</span>
+                <span>Page 27 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 14: SYDNEY ATTRACTIONS 7-10 -->
+        <!-- PAGE 28: SYDNEY ATTRACTION - 雪梨市政廳 Sydney Town Hall -->
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="attractions-list four-items">
-            
-                    <!-- Attraction Item 7 -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">7</span>
                             雪梨市政廳 Sydney Town Hall
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="雪梨市政廳 Sydney Town Hall" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Sydney Town Hall was built from 1868 to 1889 with local sandstone from Pyrmont. The site was once part of Sydney’s early burial ground. The building is used for city work, ceremonies, meetings, and concerts. Its Grand Organ was once the largest pipe organ in the world.</p>
                         <p class="attraction-desc-zh">雪梨市政廳在1868至1889年間分階段建造，使用Pyrmont開採的雪梨砂岩。這裡過去是雪梨早期墓地的一部分。市政廳不只是政府辦公地點，也舉行會議、典禮、音樂會和重要市民活動。大廳中的Grand Organ在19世紀末完成時，是世界最大的管風琴。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">Town Hall Station is below the area. An old city building and modern transport meet in one place.</p>
@@ -1376,16 +1637,37 @@
                         </div>
                         <div class="attraction-source">Source: City of Sydney</div>
                     </div>
-                
-                    <!-- Attraction Item 8 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ SYDNEY</span>
+                <span>Page 28 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 29: SYDNEY ATTRACTION - 海德公園 Hyde Park -->
+        <div class="page sydney-theme">
+            <div class="page-header">
+                <span class="city-tag">SYDNEY</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">8</span>
                             海德公園 Hyde Park
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80" alt="海德公園 Hyde Park" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">Hyde Park is Australia’s oldest public park. It covers about 16 hectares. Long ago, people held horse races, cricket games, and public events here. The Archibald Fountain opened in 1932, and the Anzac Memorial opened in 1934.</p>
                         <p class="attraction-desc-zh">海德公園是澳洲歷史最悠久的公共公園，占地約16公頃。過去曾用來舉行賽馬、板球和公共活動。公園北端的Archibald Fountain在1932年完成，紀念第一次世界大戰中澳洲與法國的友誼；南端的Anzac Memorial在1934年開放，紀念戰爭中的澳洲軍人。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">A tall object that looks like an Egyptian obelisk is really an air vent for an old underground sewer.</p>
@@ -1393,16 +1675,37 @@
                         </div>
                         <div class="attraction-source">Source: City of Sydney - Hyde Park · Archibald Fountain</div>
                     </div>
-                
-                    <!-- Attraction Item 9 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ SYDNEY</span>
+                <span>Page 29 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 30: SYDNEY ATTRACTION - 聖母主教座堂 St Mary’s Cathedral -->
+        <div class="page sydney-theme">
+            <div class="page-header">
+                <span class="city-tag">SYDNEY</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">9</span>
                             聖母主教座堂 St Mary’s Cathedral
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1545638192-3a9ec2b10091?auto=format&fit=crop&w=800&q=80" alt="聖母主教座堂 St Mary’s Cathedral" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">The first St Mary’s chapel began here in 1821. A fire destroyed the old building in 1865. Architect William Wardell designed a new Gothic Revival cathedral with Sydney sandstone. He also used Australian plants in the decorations. The two southern spires were completed in 2000.</p>
                         <p class="attraction-desc-zh">1821年，第一座St Mary’s小教堂在這裡奠基。原建築在1865年大火中燒毀，建築師William Wardell重新設計哥德復興式主教座堂。建築使用雪梨砂岩，窗戶、尖拱和高柱讓人想到歐洲中古世紀教堂，但裝飾中也加入澳洲原生植物。主要工程分兩階段進行，南側雙尖塔直到2000年才完成。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">About 179 years passed from the first foundation stone to the completion of the two spires.</p>
@@ -1410,16 +1713,37 @@
                         </div>
                         <div class="attraction-source">Source: St Mary’s Cathedral</div>
                     </div>
-                
-                    <!-- Attraction Item 10 -->
-                    <div class="attraction-item">
+                </div>
+            </div>
+            <div class="page-footer">
+                <span>⭐ SYDNEY</span>
+                <span>Page 30 of 32</span>
+            </div>
+        </div>
+            
+        <!-- PAGE 31: SYDNEY ATTRACTION - 雪梨大學 The University of Sydney -->
+        <div class="page sydney-theme">
+            <div class="page-header">
+                <span class="city-tag">SYDNEY</span>
+                <span>EXPLORER GUIDE</span>
+            </div>
+            <div class="page-content">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">10</span>
                             雪梨大學 The University of Sydney
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="雪梨大學 The University of Sydney" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">The University of Sydney was founded in 1850 and is Australia’s oldest university. Classes began in 1852. The Great Hall and Quadrangle were designed by Edmund Blacket in a Victorian Gothic style.</p>
                         <p class="attraction-desc-zh">雪梨大學在1850年由新南威爾斯議會通過法案成立，是澳洲歷史最悠久的大學。1852年開課，最初教授古典學、科學、數學與現代語言。校園最著名的Great Hall與Quadrangle由Edmund Blacket設計，採維多利亞哥德式風格，讓人想到英國牛津與劍橋的中庭。</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">The Quadrangle site was once a military camp and a farm. Cows once stood where students now sit on the lawn.</p>
@@ -1427,77 +1751,15 @@
                         </div>
                         <div class="attraction-source">Source: University of Sydney history · Great Hall and Quadrangle</div>
                     </div>
-                
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ SYDNEY</span>
-                <span>Page 14</span>
+                <span>Page 31 of 32</span>
             </div>
         </div>
             
-        <!-- PAGE 15: TRAVEL CHALLENGES -->
-        <div class="page">
-            <div class="page-header">
-                <span>QUIZ TIME</span>
-                <span>CHALLENGE</span>
-            </div>
-            <div class="page-content">
-                <h3 class="challenge-title">Travel Challenge 旅行結束前的小挑戰</h3>
-                <p class="challenge-intro">Let's see what you discovered! Can you answer these questions?</p>
-                <div class="questions-container">
-    
-                    <div class="question-card">
-                        <span class="question-num">Q1</span>
-                        <p class="question-text-en">Why is Story Bridge called Story Bridge?</p>
-                        <p class="question-text-zh">為什麼故事橋叫Story Bridge？</p>
-                        <div class="answer-line"></div>
-                    </div>
-        
-                    <div class="question-card">
-                        <span class="question-num">Q2</span>
-                        <p class="question-text-en">What does Mulgumpin mean?</p>
-                        <p class="question-text-zh">摩頓島的傳統名稱Mulgumpin是什麼意思？</p>
-                        <div class="answer-line"></div>
-                    </div>
-        
-                    <div class="question-card">
-                        <span class="question-num">Q3</span>
-                        <p class="question-text-en">Why do glow-worms glow?</p>
-                        <p class="question-text-zh">藍光蟲發光是為了做什麼？</p>
-                        <div class="answer-line"></div>
-                    </div>
-        
-                    <div class="question-card">
-                        <span class="question-num">Q4</span>
-                        <p class="question-text-en">How do we say “quay”?</p>
-                        <p class="question-text-zh">Circular Quay中的quay怎麼發音？</p>
-                        <div class="answer-line"></div>
-                    </div>
-        
-                    <div class="question-card">
-                        <span class="question-num">Q5</span>
-                        <p class="question-text-en">What local stone is used in many Sydney buildings?</p>
-                        <p class="question-text-zh">雪梨市政廳、聖母主教座堂和雪梨大學常使用哪一種本地石材？</p>
-                        <div class="answer-line"></div>
-                    </div>
-        
-                    <div class="question-card">
-                        <span class="question-num">Q6</span>
-                        <p class="question-text-en">Which place would you like to visit again, and why?</p>
-                        <p class="question-text-zh">你最想再去一次的地方是哪裡？為什麼？</p>
-                        <div class="answer-line"></div>
-                    </div>
-        
-                </div>
-            </div>
-            <div class="page-footer">
-                <span>⭐ TRAVEL CHALLENGES</span>
-                <span>Page 15</span>
-            </div>
-        </div>
-    
-        <!-- PAGE 16: DIARY & BACK COVER -->
+        <!-- PAGE 32: DIARY & BACK COVER -->
         <div class="page back-cover">
             <div class="diary-section">
                 <h3 class="diary-title">My Travel Notes 我的旅行日記</h3>
@@ -1515,11 +1777,11 @@
             <div class="back-closing">
                 <div class="closing-banner">Have a wonderful trip!</div>
                 <div class="closing-sub">祝你有一趟精彩的澳洲旅行！</div>
-                <div class="stamp-decor">🐨 🦘 ✈️ 🗺️ 🏖️</div>
+                <div class="stamp-decor">🐨 🦘 ✈️ 運 🛳️ 🏖️</div>
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 16</span>
+                <span>Page 32 of 32</span>
             </div>
         </div>
     

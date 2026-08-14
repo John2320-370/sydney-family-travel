@@ -1,29 +1,63 @@
 # -*- coding: utf-8 -*-
 import json
-import os
 
 def build_html():
     with open('book_data.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
         
     # Manual corrections for some fields
-    # Q1: 為什麼故事橋叫Story Bridge？
     data["challenges"][0]["zh"] = "為什麼故事橋叫Story Bridge？"
     data["challenges"][0]["en"] = "Why is Story Bridge called Story Bridge?"
     
+    # Map of representative images from Unsplash for every single attraction
+    unsplash_images = {
+        # Brisbane
+        "South Bank Parklands": "https://images.unsplash.com/photo-1590233649603-4e8c3b9b4d47?auto=format&fit=crop&w=800&q=80",
+        "Story Bridge": "https://images.unsplash.com/photo-1549849171-09f62448c5dd?auto=format&fit=crop&w=800&q=80",
+        "Lone Pine Koala Sanctuary": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80",
+        "Mount Coot-tha Lookout": "https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=800&q=80",
+        "Queensland Museum": "https://images.unsplash.com/photo-1501290741922-b56c0d0974cf?auto=format&fit=crop&w=800&q=80",
+        "Brisbane River and CityCat": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80",
+        "Mulgumpin (Moreton Island)": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        "Brisbane and Kaohsiung: Sister City": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80",
+        "Brisbane and Kaohsiung: 姐妹市": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80",
+        "Brisbane and Kaohsiung": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80",
+        "The University of Queensland": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+        
+        # Gold Coast
+        "Surfers Paradise": "https://images.unsplash.com/photo-1544913776-90c1223073a3?auto=format&fit=crop&w=800&q=80",
+        "Currumbin Wildlife Sanctuary": "https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=800&q=80",
+        "Warner Bros. Movie World": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+        "Sea World": "https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=800&q=80",
+        "Q1大樓與SkyPoint觀景台": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+        "Springbrook and Natural Bridge": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+        
+        # Sydney
+        "Sydney Opera House": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+        "Sydney Harbour Bridge": "https://images.unsplash.com/photo-1524820197278-540916411e20?auto=format&fit=crop&w=800&q=80",
+        "Circular Quay": "https://images.unsplash.com/photo-1549918830-11670403c488?auto=format&fit=crop&w=800&q=80",
+        "Taronga Zoo": "https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?auto=format&fit=crop&w=800&q=80",
+        "Bondi Beach": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80",
+        "Darling Harbour": "https://images.unsplash.com/photo-1549637642-9018f0dbab12?auto=format&fit=crop&w=800&q=80",
+        "Sydney Town Hall": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+        "Hyde Park": "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80",
+        "聖母主教座堂 St Mary’s Cathedral": "https://images.unsplash.com/photo-1545638192-3a9ec2b10091?auto=format&fit=crop&w=800&q=80",
+        "St Mary's Cathedral": "https://images.unsplash.com/photo-1545638192-3a9ec2b10091?auto=format&fit=crop&w=800&q=80",
+        "The University of Sydney": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80"
+    }
+
     html = """<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Australia Travel Book - 我的澳洲旅行小書</title>
-    <!-- Google Fonts: Fredoka for headings, Outfit for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f5f3ef;
+            --bg-color: #f3f0ea;
             --page-bg: #ffffff;
             --text-dark: #1e293b;
             --text-muted: #64748b;
@@ -52,7 +86,6 @@ def build_html():
             align-items: center;
         }
 
-        /* Screen Preview styles */
         .controls {
             margin-bottom: 20px;
             text-align: center;
@@ -70,7 +103,7 @@ def build_html():
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.2s ease;
             font-family: 'Fredoka', sans-serif;
         }
@@ -78,7 +111,6 @@ def build_html():
         .btn-print:hover {
             background-color: #047857;
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
         }
 
         .book-container {
@@ -88,13 +120,13 @@ def build_html():
             align-items: center;
         }
 
-        /* Page Layout - A4 Aspect Ratio on Screen */
+        /* Page Layout - A4 Size */
         .page {
             width: 210mm;
             height: 297mm;
             background-color: var(--page-bg);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-            padding: 15mm 15mm;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            padding: 18mm 18mm;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -103,14 +135,13 @@ def build_html():
             border-radius: 4px;
         }
 
-        /* Page Background Decoration */
         .page::before {
             content: '';
             position: absolute;
-            top: 8mm;
-            left: 8mm;
-            right: 8mm;
-            bottom: 8mm;
+            top: 10mm;
+            left: 10mm;
+            right: 10mm;
+            bottom: 10mm;
             border: 1px dashed #cbd5e1;
             pointer-events: none;
             border-radius: 8px;
@@ -119,15 +150,15 @@ def build_html():
 
         .page-header {
             font-family: 'Fredoka', sans-serif;
-            font-size: 9pt;
+            font-size: 10pt;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1.5px solid #f1f5f9;
-            padding-bottom: 4px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 6px;
             z-index: 10;
         }
 
@@ -137,27 +168,27 @@ def build_html():
 
         .page-footer {
             font-family: 'Fredoka', sans-serif;
-            font-size: 9pt;
+            font-size: 10pt;
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1.5px solid #f1f5f9;
-            padding-top: 4px;
+            border-top: 2px solid #f1f5f9;
+            padding-top: 6px;
             z-index: 10;
         }
 
         .page-content {
             flex-grow: 1;
-            padding: 6mm 0;
+            padding: 8mm 0;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
             z-index: 10;
-            overflow: hidden;
+            height: 100%;
         }
 
-        /* Cover Page Custom Styling */
+        /* Cover Page Styling */
         .page.cover-page {
             justify-content: space-between;
             align-items: center;
@@ -170,12 +201,12 @@ def build_html():
         }
 
         .cover-header {
-            margin-top: 5mm;
+            margin-top: 8mm;
         }
 
         .cover-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 34pt;
+            font-size: 38pt;
             font-weight: 700;
             color: #b45309;
             line-height: 1.1;
@@ -183,26 +214,26 @@ def build_html():
         }
 
         .cover-subtitle {
-            font-size: 22pt;
+            font-size: 26pt;
             font-weight: 700;
             color: #451a03;
             letter-spacing: 2px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .cover-cities {
             font-family: 'Fredoka', sans-serif;
-            font-size: 14pt;
+            font-size: 16pt;
             color: var(--text-muted);
             letter-spacing: 1px;
             border-bottom: 2px solid #b45309;
-            padding-bottom: 6px;
-            margin-bottom: 10px;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
             display: inline-block;
         }
 
         .cover-desc {
-            font-size: 12pt;
+            font-size: 13pt;
             color: #78350f;
             font-weight: 500;
         }
@@ -212,8 +243,8 @@ def build_html():
             height: 110mm;
             border-radius: var(--border-radius);
             overflow: hidden;
-            border: 5px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 6px solid white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .cover-image {
@@ -224,19 +255,18 @@ def build_html():
 
         .cover-footer {
             width: 85%;
-            margin-bottom: 5mm;
+            margin-bottom: 8mm;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
         }
 
         .name-box {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 2px dashed #b45309;
             border-radius: 8px;
-            font-size: 13pt;
+            font-size: 15pt;
             font-weight: bold;
             color: #451a03;
             background-color: rgba(255,255,255,0.6);
@@ -245,55 +275,55 @@ def build_html():
         /* Chapter Divider Page */
         .page.chapter-divider {
             justify-content: space-between;
-            padding: 15mm;
+            padding: 18mm;
         }
 
         .divider-title-group {
             text-align: center;
-            margin-top: 2mm;
+            margin-top: 5mm;
         }
 
         .divider-city-en {
             font-family: 'Fredoka', sans-serif;
-            font-size: 36pt;
+            font-size: 40pt;
             font-weight: 700;
             line-height: 1;
         }
 
         .divider-city-zh {
-            font-size: 24pt;
+            font-size: 28pt;
             font-weight: 700;
             margin-top: 5px;
         }
 
         .divider-tagline {
             font-family: 'Fredoka', sans-serif;
-            font-size: 11pt;
+            font-size: 12pt;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 12px;
             font-weight: 600;
         }
 
         .divider-desc-box {
-            margin: 15px 0;
-            padding: 15px;
+            margin: 20px 0;
+            padding: 18px;
             border-radius: var(--border-radius);
-            font-size: 11pt;
-            line-height: 1.5;
+            font-size: 12pt;
+            line-height: 1.6;
         }
 
         .divider-desc-en {
             font-weight: 500;
-            margin-bottom: 8px;
-            font-size: 11.5pt;
+            margin-bottom: 10px;
+            font-size: 13pt;
         }
 
         .divider-desc-zh {
             color: var(--text-muted);
             border-top: 1px dashed rgba(0,0,0,0.1);
-            padding-top: 8px;
-            font-size: 10pt;
+            padding-top: 10px;
+            font-size: 11pt;
         }
 
         .divider-image-container {
@@ -303,7 +333,6 @@ def build_html():
             overflow: hidden;
             border: 4px solid white;
             box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            margin-bottom: 2mm;
         }
 
         .divider-image {
@@ -334,242 +363,229 @@ def build_html():
         .page.chapter-divider .divider-tagline { color: var(--text-muted); }
         .page.chapter-divider .divider-desc-box { background-color: var(--theme-bg); border-left: 5px solid var(--theme-color); }
 
-        /* Intro Page Layout */
-        .intro-title {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 16pt;
-            color: #b45309;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #fcd34d;
-            padding-bottom: 4px;
-        }
-
-        .intro-box {
-            background-color: #fffbeb;
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid #f59e0b;
-            margin-bottom: 15px;
-            font-size: 10.5pt;
-            line-height: 1.5;
-        }
-
-        .intro-box-en {
-            font-weight: 500;
-            margin-bottom: 6px;
-            font-size: 11pt;
-            color: #78350f;
-        }
-
-        .intro-box-zh {
-            color: #b45309;
-            font-size: 9.5pt;
-        }
-
-        .table-title {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 15pt;
-            color: #1e293b;
-            margin-bottom: 10px;
-        }
-
-        /* Styled Table */
-        .dest-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 10pt;
-            margin-bottom: 15px;
-        }
-
-        .dest-table th {
-            background-color: #f1f5f9;
-            color: #1e293b;
-            text-align: left;
-            padding: 8px;
-            font-weight: 700;
-            border-bottom: 2px solid #cbd5e1;
-        }
-
-        .dest-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .dest-table tr:hover {
-            background-color: #f8fafc;
-        }
-
-        .dest-city-cell {
-            font-weight: bold;
-            color: #b45309;
-        }
-
-        /* Attraction Item Styling - Layout 3 per Page */
-        .attractions-list {
+        /* Attraction Item Styling - 1 Attraction per Page */
+        .attraction-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 4mm;
-            height: 100%;
             justify-content: space-between;
-        }
-
-        /* For 4 items on Sydney's last page, make gaps smaller */
-        .attractions-list.four-items {
-            gap: 2mm;
-        }
-
-        .attraction-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            height: 100%;
         }
 
         .attraction-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 13.5pt;
+            font-size: 20pt;
             font-weight: 700;
             color: var(--theme-color);
-            border-bottom: 1.5px solid #f1f5f9;
-            padding-bottom: 2px;
+            border-bottom: 2px solid var(--theme-color);
+            padding-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .attraction-title span.number {
             background-color: var(--theme-color);
             color: white;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10pt;
+            font-size: 14pt;
         }
 
+        .attraction-img-container {
+            width: 100%;
+            height: 80mm;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+            margin-bottom: 10px;
+        }
+
+        .attraction-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* English font doubled in size as requested: ~18-20pt */
         .attraction-desc-en {
-            font-size: 11pt;
+            font-size: 18.5pt;
             font-weight: 500;
-            line-height: 1.4;
+            line-height: 1.5;
             color: var(--text-dark);
             text-align: justify;
+            margin-bottom: 10px;
         }
 
         .attraction-desc-zh {
-            font-size: 9pt;
-            line-height: 1.35;
+            font-size: 11pt;
+            line-height: 1.5;
             color: var(--text-muted);
             text-align: justify;
+            background-color: #f8fafc;
+            border: 1px solid #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
 
         .attraction-funfact {
             background-color: var(--theme-bg);
-            border: 1.5px dashed #cbd5e1;
+            border: 1.5px dashed var(--theme-color);
             border-radius: 8px;
-            padding: 8px 10px;
-            margin-top: 2px;
+            padding: 10px 14px;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
         }
 
         .funfact-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 9pt;
+            font-size: 11pt;
             font-weight: 700;
             color: var(--theme-color);
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
             text-transform: uppercase;
         }
 
+        /* English font in fun fact doubled size: ~15pt */
         .funfact-text-en {
-            font-size: 10pt;
+            font-size: 15pt;
             font-weight: 600;
             color: #0f172a;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .funfact-text-zh {
-            font-size: 8.5pt;
+            font-size: 10.5pt;
             color: var(--text-muted);
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .attraction-source {
-            font-size: 7.5pt;
+            font-size: 8pt;
             color: var(--text-muted);
             text-align: right;
             font-style: italic;
-            margin-top: 1px;
+            margin-top: 3px;
         }
 
-        /* Challenge Page Styling */
-        .challenge-title {
+        /* Glow-worm Special Section Styling */
+        .glowworm-cover {
+            background: linear-gradient(135deg, #090d16 0%, #152238 100%);
+            color: #e2e8f0;
+        }
+
+        .glowworm-cover::before {
+            border: 2px solid #38bdf8;
+        }
+
+        .glowworm-title-group {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .glowworm-label {
             font-family: 'Fredoka', sans-serif;
-            font-size: 18pt;
-            color: #0f766e;
-            text-align: center;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #99f6e4;
-            padding-bottom: 6px;
+            font-size: 12pt;
+            color: #38bdf8;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        .challenge-intro {
-            font-size: 10pt;
-            color: var(--text-muted);
-            text-align: center;
+        .glowworm-title-en {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32pt;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 5px;
+        }
+
+        .glowworm-title-zh {
+            font-size: 22pt;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-top: 5px;
+        }
+
+        .glowworm-intro {
+            font-size: 12pt;
+            line-height: 1.6;
+            margin: 15px 0;
+            background-color: rgba(255,255,255,0.05);
+            border-left: 4px solid #38bdf8;
+            padding: 15px;
+            border-radius: 4px;
+            color: #f1f5f9;
+        }
+
+        .glowworm-card {
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 8px;
+            padding: 15px;
             margin-bottom: 15px;
         }
 
-        .questions-container {
+        .glowworm-card-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 14pt;
+            color: #38bdf8;
+            font-weight: 700;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 3px;
+        }
+
+        .glowworm-card-desc-en {
+            font-size: 14.5pt; /* Slightly smaller for fitting two on a page, but still very large */
+            font-weight: 500;
+            line-height: 1.5;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .glowworm-card-desc-zh {
+            font-size: 10.5pt;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* Drawing Box for Glow-worms */
+        .drawing-box-container {
+            width: 100%;
+            height: 90mm;
+            border: 2px dashed #38bdf8;
+            border-radius: var(--border-radius);
+            background-color: rgba(255,255,255,0.05);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            color: #94a3b8;
+            padding: 10px;
+            margin-top: 15px;
         }
 
-        .question-card {
-            background-color: #f0fdfa;
-            border: 1px solid #ccfbf1;
-            border-radius: 8px;
-            padding: 10px 12px;
-            position: relative;
-        }
-
-        .question-num {
-            position: absolute;
-            top: -9px;
-            left: 12px;
-            background-color: #0f766e;
-            color: white;
+        .drawing-box-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 8.5pt;
-            font-weight: bold;
-            padding: 1px 6px;
-            border-radius: 10px;
-        }
-
-        .question-text-en {
-            font-size: 11pt;
-            font-weight: 600;
-            color: #0f172a;
-            margin-top: 3px;
-            margin-bottom: 3px;
-        }
-
-        .question-text-zh {
-            font-size: 9.5pt;
-            color: #0d9488;
+            font-size: 13pt;
+            color: #38bdf8;
+            font-weight: 700;
             margin-bottom: 5px;
         }
 
-        .answer-line {
-            width: 100%;
-            height: 25px;
-            border-bottom: 1px dashed #99f6e4;
-            margin-top: 3px;
+        .drawing-box-desc {
+            font-size: 10pt;
+            text-align: center;
         }
 
         /* Back Cover Styling */
@@ -588,59 +604,59 @@ def build_html():
 
         .diary-section {
             width: 100%;
-            margin-top: 5mm;
+            margin-top: 8mm;
             text-align: left;
         }
 
         .diary-title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 15pt;
+            font-size: 16pt;
             color: #0f766e;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border-bottom: 2px solid #99f6e4;
-            padding-bottom: 4px;
+            padding-bottom: 5px;
         }
 
         .writing-lines {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 8px;
+            gap: 20px;
+            margin-top: 15px;
         }
 
         .writing-line {
             border-bottom: 1px dashed #cbd5e1;
-            height: 22px;
+            height: 30px;
         }
 
         .back-closing {
-            margin-bottom: 5mm;
+            margin-bottom: 10mm;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .closing-banner {
             background-color: #0f766e;
             color: white;
             font-family: 'Fredoka', sans-serif;
-            font-size: 14pt;
+            font-size: 16pt;
             font-weight: bold;
-            padding: 8px 24px;
+            padding: 10px 30px;
             border-radius: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .closing-sub {
-            font-size: 12pt;
+            font-size: 13pt;
             font-weight: 700;
             color: #0f172a;
         }
 
         .stamp-decor {
-            font-size: 20pt;
-            margin-top: 5px;
+            font-size: 24pt;
+            margin-top: 10px;
         }
 
         /* Print styles */
@@ -668,7 +684,7 @@ def build_html():
                 border-radius: 0;
                 padding: 15mm 15mm !important;
             }
-            
+
             @page {
                 size: A4;
                 margin: 0;
@@ -703,62 +719,13 @@ def build_html():
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 1</span>
-            </div>
-        </div>
-    """
-    
-    # Page 2: Intro & Table
-    html += f"""
-        <!-- PAGE 2: INTRO & TOC -->
-        <div class="page">
-            <div class="page-header">
-                <span>INTRODUCTION</span>
-                <span>GETTING READY</span>
-            </div>
-            <div class="page-content">
-                <h3 class="intro-title">{data['intro_title']}</h3>
-                <div class="intro-box">
-                    <p class="intro-box-en">{data['intro_en']}</p>
-                    <p class="intro-box-zh">{data['intro_zh']}</p>
-                </div>
-                
-                <h3 class="table-title">{data['table_title']}</h3>
-                <table class="dest-table">
-                    <thead>
-                        <tr>
-                            <th>City 城市</th>
-                            <th>State 州</th>
-                            <th>Highlights 特色</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="dest-city-cell">Brisbane<br>布里斯本</td>
-                            <td>Queensland<br>昆士蘭州</td>
-                            <td>Bridges, ferries, koalas, sand island<br>河流、橋梁、無尾熊、沙島</td>
-                        </tr>
-                        <tr>
-                            <td class="dest-city-cell">Gold Coast<br>黃金海岸</td>
-                            <td>Queensland<br>昆士蘭州</td>
-                            <td>Beaches, theme parks, rainforest, glow-worms<br>沙灘、主題樂園、雨林、藍光蟲</td>
-                        </tr>
-                        <tr>
-                            <td class="dest-city-cell">Sydney<br>雪梨</td>
-                            <td>New South Wales<br>新南威爾斯州</td>
-                            <td>Harbour, Opera House, sandstone buildings<br>港口、歌劇院、歷史建築、公園</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="page-footer">
-                <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 2</span>
+                <span>Page 1 of 32</span>
             </div>
         </div>
     """
 
-    page_num = 3
+    page_num = 2
+    
     # Iterate through cities
     for city_idx, city in enumerate(data["cities"]):
         theme_class = "brisbane-theme" if city_idx == 0 else "goldcoast-theme" if city_idx == 1 else "sydney-theme"
@@ -785,45 +752,64 @@ def build_html():
             
             <div class="page-footer">
                 <span>⭐ {city['name_en'].upper()}</span>
-                <span>Page {page_num}</span>
+                <span>Page {page_num} of 32</span>
             </div>
         </div>
         """
         page_num += 1
         
-        # Attractions content
+        # attractions processing
         attractions = city["attractions"]
-        chunk_size = 3
-        # If Sydney (index 2), last page has 4 items
-        if city_idx == 2:
-            chunks = [attractions[0:3], attractions[3:6], attractions[6:10]]
+        
+        # If Gold Coast (index 1), split out Glow-worms (items 7, 8, 9) into the special segment
+        normal_attractions = []
+        glowworm_attractions = []
+        
+        if city_idx == 1:
+            for attr in attractions:
+                # Glow-worms are items 7, 8, 9
+                if attr["num"] in ["7", "8", "9"]:
+                    glowworm_attractions.append(attr)
+                else:
+                    normal_attractions.append(attr)
         else:
-            chunks = [attractions[i:i + chunk_size] for i in range(0, len(attractions), chunk_size)]
+            normal_attractions = attractions
             
-        for chunk_idx, chunk in enumerate(chunks):
-            list_class = "attractions-list four-items" if len(chunk) == 4 else "attractions-list"
+        # Render normal attractions (1 per page)
+        for attr in normal_attractions:
+            # Map Unsplash image
+            attr_title_clean = attr["title"]
+            # Find closest match in unsplash_images key
+            img_url = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" # fallback
+            for k in unsplash_images.keys():
+                if k in attr_title_clean or attr_title_clean in k:
+                    img_url = unsplash_images[k]
+                    break
+                    
             html += f"""
-        <!-- PAGE {page_num}: {city['name_en'].upper()} ATTRACTIONS {chunk[0]['num']}-{chunk[-1]['num']} -->
+        <!-- PAGE {page_num}: {city['name_en'].upper()} ATTRACTION - {attr['title']} -->
         <div class="page {theme_class}">
             <div class="page-header">
                 <span class="city-tag">{city['name_en'].upper()}</span>
                 <span>EXPLORER GUIDE</span>
             </div>
             <div class="page-content">
-                <div class="{list_class}">
-            """
-            
-            for attr in chunk:
-                html += f"""
-                    <!-- Attraction Item {attr['num']} -->
-                    <div class="attraction-item">
+                <div class="attraction-wrapper">
+                    <div>
                         <h4 class="attraction-title">
                             <span class="number">{attr['num']}</span>
                             {attr['title']}
                         </h4>
+                        
+                        <div class="attraction-img-container">
+                            <img src="{img_url}" alt="{attr['title']}" class="attraction-img" loading="lazy">
+                        </div>
+                        
                         <p class="attraction-desc-en">{attr['desc_en']}</p>
                         <p class="attraction-desc-zh">{attr['desc_zh']}</p>
-                        
+                    </div>
+                    
+                    <div>
                         <div class="attraction-funfact">
                             <div class="funfact-title">💡 Fun Fact 趣味小知識</div>
                             <p class="funfact-text-en">{attr['fun_fact_en']}</p>
@@ -831,56 +817,97 @@ def build_html():
                         </div>
                         <div class="attraction-source">{attr['source']}</div>
                     </div>
-                """
-                
-            html += f"""
                 </div>
             </div>
             <div class="page-footer">
                 <span>⭐ {city['name_en'].upper()}</span>
-                <span>Page {page_num}</span>
+                <span>Page {page_num} of 32</span>
             </div>
         </div>
             """
             page_num += 1
             
-    # Page 15: Challenges
-    html += f"""
-        <!-- PAGE 15: TRAVEL CHALLENGES -->
-        <div class="page">
-            <div class="page-header">
-                <span>QUIZ TIME</span>
-                <span>CHALLENGE</span>
+        # Render Glow-worm Special Section if city is Gold Coast
+        if city_idx == 1 and len(glowworm_attractions) > 0:
+            # Glow-worms Part 1: Cover + Intro + What is + Why glow
+            html += f"""
+        <!-- PAGE {page_num}: SPECIAL FEATURE - GLOW-WORMS (PART 1) -->
+        <div class="page glowworm-cover">
+            <div class="page-header" style="color: #94a3b8; border-bottom: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>GOLD COAST SPECIAL</span>
+                <span>BIOLUMINESCENCE EXPLORATION</span>
             </div>
-            <div class="page-content">
-                <h3 class="challenge-title">Travel Challenge 旅行結束前的小挑戰</h3>
-                <p class="challenge-intro">Let's see what you discovered! Can you answer these questions?</p>
-                <div class="questions-container">
-    """
-    
-    for idx, q in enumerate(data["challenges"]):
-        html += f"""
-                    <div class="question-card">
-                        <span class="question-num">Q{idx+1}</span>
-                        <p class="question-text-en">{q['en']}</p>
-                        <p class="question-text-zh">{q['zh']}</p>
-                        <div class="answer-line"></div>
-                    </div>
-        """
-        
-    html += """
+            
+            <div class="page-content" style="justify-content: flex-start;">
+                <div class="glowworm-title-group">
+                    <span class="glowworm-label">★ Special Feature ★</span>
+                    <h2 class="glowworm-title-en">GLOW-WORMS</h2>
+                    <h3 class="glowworm-title-zh">藍光蟲生態探秘</h3>
+                </div>
+                
+                <div class="glowworm-intro">
+                    In the quiet, dark, and wet caves of Springbrook rainforest, tiny living lights glow like blue-green stars in the dark. Let's learn about these magical creatures!
+                </div>
+                
+                <!-- Glow-worm 1: Not a worm -->
+                <div class="glowworm-card">
+                    <h4 class="glowworm-card-title">💡 1. {glowworm_attractions[0]['title']}</h4>
+                    <p class="glowworm-card-desc-en">{glowworm_attractions[0]['desc_en']}</p>
+                    <p class="glowworm-card-desc-zh">{glowworm_attractions[0]['desc_zh']}</p>
+                </div>
+                
+                <!-- Glow-worm 2: Why do they glow -->
+                <div class="glowworm-card" style="margin-bottom: 0;">
+                    <h4 class="glowworm-card-title">💡 2. {glowworm_attractions[1]['title']}</h4>
+                    <p class="glowworm-card-desc-en">{glowworm_attractions[1]['desc_en']}</p>
+                    <p class="glowworm-card-desc-zh">{glowworm_attractions[1]['desc_zh']}</p>
                 </div>
             </div>
-            <div class="page-footer">
-                <span>⭐ TRAVEL CHALLENGES</span>
-                <span>Page 15</span>
+            
+            <div class="page-footer" style="color: #94a3b8; border-top: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>⭐ GLOW-WORMS SPECIAL</span>
+                <span>Page {page_num} of 32</span>
             </div>
         </div>
-    """
-    
-    # Page 16: Travel Diary & Back Cover
-    html += """
-        <!-- PAGE 16: DIARY & BACK COVER -->
+            """
+            page_num += 1
+            
+            # Glow-worms Part 2: How to protect + Drawing activity
+            html += f"""
+        <!-- PAGE {page_num}: SPECIAL FEATURE - GLOW-WORMS (PART 2) -->
+        <div class="page glowworm-cover">
+            <div class="page-header" style="color: #94a3b8; border-bottom: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>GOLD COAST SPECIAL</span>
+                <span>ECO CONSERVATION</span>
+            </div>
+            
+            <div class="page-content" style="justify-content: flex-start;">
+                <!-- Glow-worm 3: How to protect -->
+                <div class="glowworm-card">
+                    <h4 class="glowworm-card-title">💡 3. {glowworm_attractions[2]['title']}</h4>
+                    <p class="glowworm-card-desc-en">{glowworm_attractions[2]['desc_en']}</p>
+                    <p class="glowworm-card-desc-zh">{glowworm_attractions[2]['desc_zh']}</p>
+                </div>
+                
+                <!-- Interactive Drawing Activity -->
+                <div class="drawing-box-container">
+                    <div class="drawing-box-title">🎨 Draw Your Own Glow-worm Cave!</div>
+                    <div class="drawing-box-title" style="font-size: 11pt;">畫出你的藍光蟲洞穴！</div>
+                    <p class="drawing-box-desc" style="margin-top: 8px;">Use crayons to draw the dark cave and add glowing blue stars using light blue or yellow! (可以畫出黑暗洞穴與點點藍光蟲！)</p>
+                </div>
+            </div>
+            
+            <div class="page-footer" style="color: #94a3b8; border-top: 2px solid rgba(56, 189, 248, 0.2);">
+                <span>⭐ GLOW-WORMS SPECIAL</span>
+                <span>Page {page_num} of 32</span>
+            </div>
+        </div>
+            """
+            page_num += 1
+
+    # Page 32: Travel Diary & Back Cover
+    html += f"""
+        <!-- PAGE 32: DIARY & BACK COVER -->
         <div class="page back-cover">
             <div class="diary-section">
                 <h3 class="diary-title">My Travel Notes 我的旅行日記</h3>
@@ -898,11 +925,11 @@ def build_html():
             <div class="back-closing">
                 <div class="closing-banner">Have a wonderful trip!</div>
                 <div class="closing-sub">祝你有一趟精彩的澳洲旅行！</div>
-                <div class="stamp-decor">🐨 🦘 ✈️ 🗺️ 🏖️</div>
+                <div class="stamp-decor">🐨 🦘 ✈️ 運 🛳️ 🏖️</div>
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
-                <span>Page 16</span>
+                <span>Page 32 of 32</span>
             </div>
         </div>
     """
@@ -915,7 +942,7 @@ def build_html():
     
     with open('travel_book.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    print("HTML booklet file generated successfully as travel_book.html")
+    print("HTML booklet file generated successfully as travel_book.html with 32 pages.")
 
 if __name__ == '__main__':
     build_html()
