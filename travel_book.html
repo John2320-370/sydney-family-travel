@@ -348,13 +348,15 @@
             font-size: 14pt;
         }
 
+        /* Photographer / IG Style Photo Frame */
         .attraction-img-container {
+            position: relative;
             width: 100%;
-            height: 80mm;
+            height: 82mm;
             border-radius: var(--border-radius);
             overflow: hidden;
             border: 4px solid white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             margin-bottom: 10px;
         }
 
@@ -362,6 +364,28 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: contrast(1.04) saturate(1.08);
+            transition: transform 0.3s ease;
+        }
+
+        /* IG Style Location Tag Badge */
+        .ig-badge {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 9pt;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         /* English font doubled in size as requested: ~18-20pt */
@@ -407,7 +431,6 @@
             text-transform: uppercase;
         }
 
-        /* English font in fun fact doubled size: ~15pt */
         .funfact-text-en {
             font-size: 15pt;
             font-weight: 600;
@@ -498,7 +521,7 @@
         }
 
         .glowworm-card-desc-en {
-            font-size: 14.5pt; /* Slightly smaller for fitting two on a page, but still very large */
+            font-size: 14.5pt;
             font-weight: 500;
             line-height: 1.5;
             color: #ffffff;
@@ -511,7 +534,6 @@
             line-height: 1.5;
         }
 
-        /* Drawing Box for Glow-worms */
         .drawing-box-container {
             width: 100%;
             height: 90mm;
@@ -641,6 +663,13 @@
                 size: A4;
                 margin: 0;
             }
+
+            .ig-badge {
+                border: 1px solid #ffffff;
+                background: #0f172a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
@@ -699,7 +728,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -710,7 +739,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1590233649603-4e8c3b9b4d47?auto=format&fit=crop&w=800&q=80" alt="南岸公園 South Bank Parklands" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1549474843-ed8398284534?auto=format&fit=crop&w=1200&q=80" alt="南岸公園 South Bank Parklands" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">South Bank was once an area of docks and factories. Brisbane held World Expo 88 here. After the Expo, people wanted a public park, so South Bank Parklands opened in 1992. The wooden Nepalese Peace Pagoda remains from the Expo.</p>
@@ -737,7 +767,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -748,7 +778,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1549849171-09f62448c5dd?auto=format&fit=crop&w=800&q=80" alt="故事橋 Story Bridge" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1563294329-873d9d3f1a0e?auto=format&fit=crop&w=1200&q=80" alt="故事橋 Story Bridge" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Story Bridge is named after John Douglas Story. “Story” was his family name. He strongly supported the plan for the bridge. Work began in 1935, and the bridge opened in 1940. Workers built from both sides of the river and met in the middle.</p>
@@ -775,7 +806,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -786,7 +817,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80" alt="龍柏無尾熊保護區 Lone Pine Koala Sanctuary" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=80" alt="龍柏無尾熊保護區 Lone Pine Koala Sanctuary" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">“Lone Pine” means one pine tree standing alone. Claude Reid opened the sanctuary in 1927, when many koalas were killed for fur. It began with two koalas named Jack and Jill.</p>
@@ -813,7 +845,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -824,7 +856,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=800&q=80" alt="庫薩山觀景台 Mount Coot-tha Lookout" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=1200&q=80" alt="庫薩山觀景台 Mount Coot-tha Lookout" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">The name Mount Coot-tha comes from “Kuta,” meaning a place of wild honey. Native stingless bees lived here. Europeans once called it One Tree Hill because surveyors left one tree as a marker. The name changed to Mount Coot-tha in 1883.</p>
@@ -851,7 +884,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -862,7 +895,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1501290741922-b56c0d0974cf?auto=format&fit=crop&w=800&q=80" alt="昆士蘭博物館 Queensland Museum" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?auto=format&fit=crop&w=1200&q=80" alt="昆士蘭博物館 Queensland Museum" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Queensland Museum began in 1862. It collected animals, plants, rocks, fossils, and cultural objects. It moved to South Bank in 1986. The museum tells stories from dinosaur times to today.</p>
@@ -889,7 +923,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -900,7 +934,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80" alt="布里斯本河與城市貓船 Brisbane River and CityCat" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?auto=format&fit=crop&w=1200&q=80" alt="布里斯本河與城市貓船 Brisbane River and CityCat" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">A CityCat is not a city cat! The name comes from “city” and “catamaran.” A catamaran has two hulls. CityCats began in 1996. They are public transport for workers, students, and visitors.</p>
@@ -927,7 +962,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -938,7 +973,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="摩頓島（穆爾甘平）Mulgumpin (Moreton Island)" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="摩頓島（穆爾甘平）Mulgumpin (Moreton Island)" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Moreton Island’s traditional name is Mulgumpin, meaning “place of sandhills.” It is the traditional home of the Quandamooka People and the world’s third-largest sand island. It has dunes, lakes, beaches, forests, old forts, and Queensland’s oldest lighthouse.</p>
@@ -965,7 +1001,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -976,7 +1012,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80" alt="布里斯本與高雄：姐妹市 Brisbane and Kaohsiung" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=1200&q=80" alt="布里斯本與高雄：姐妹市 Brisbane and Kaohsiung" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Brisbane and Kaohsiung became sister cities on 9 September 1997. Sister cities are international friends. Both cities have important rivers, harbours, business, and industry. They share ideas about waterfronts, city planning, trade, education, health, tourism, and culture.</p>
@@ -1003,7 +1040,7 @@
         <div class="page brisbane-theme">
             <div class="page-header">
                 <span class="city-tag">BRISBANE</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1014,7 +1051,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="昆士蘭大學 The University of Queensland" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80" alt="昆士蘭大學 The University of Queensland" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Brisbane, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">The University of Queensland is called UQ. It was founded in 1909. Its main St Lucia campus sits beside the Brisbane River. The Great Court has colourful sandstone walls and more than 1,200 carvings.</p>
@@ -1064,7 +1102,7 @@
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1075,7 +1113,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1544913776-90c1223073a3?auto=format&fit=crop&w=800&q=80" alt="衝浪者天堂 Surfers Paradise" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80" alt="衝浪者天堂 Surfers Paradise" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Gold Coast, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">This place was once called Elston. Jim Cavill opened the Surfers Paradise Hotel in the 1920s. The town changed its name to Surfers Paradise in 1933. Cavill Avenue is named after Jim Cavill.</p>
@@ -1102,7 +1141,7 @@
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1113,7 +1152,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=800&q=80" alt="可倫賓野生動物保護區 Currumbin Wildlife Sanctuary" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=1200&q=80" alt="可倫賓野生動物保護區 Currumbin Wildlife Sanctuary" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Gold Coast, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Alex Griffiths grew flowers. Rainbow lorikeets came to eat them, so he offered food in another place. The colourful birds attracted visitors. He opened Currumbin Bird Sanctuary in 1947. A wildlife hospital opened in 1989.</p>
@@ -1140,7 +1180,7 @@
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1151,7 +1191,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="華納兄弟電影世界 Warner Bros. Movie World" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=1200&q=80" alt="華納兄弟電影世界 Warner Bros. Movie World" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Gold Coast, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Movie World opened in 1991 beside real film studios. Early attractions showed how pretend explosions, car chases, and stunts were made. Movie stars and Bugs Bunny joined the opening celebration.</p>
@@ -1178,7 +1219,7 @@
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1189,7 +1230,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=800&q=80" alt="海洋世界 Sea World" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=1200&q=80" alt="海洋世界 Sea World" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Gold Coast, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Sea World began as a water-ski show. It moved to The Spit and opened in 1971. Later, it added marine animals, learning activities, rescue work, and rides.</p>
@@ -1216,7 +1258,7 @@
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1227,7 +1269,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Q1大樓與SkyPoint觀景台" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1579621970795-87faff3f900a?auto=format&fit=crop&w=1200&q=80" alt="Q1大樓與SkyPoint觀景台" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Gold Coast, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Q1 means “Queensland Number One.” It was completed in 2005 and is about 322.5 metres tall, including its spire. Its shape was inspired by the Sydney Olympic torch and the Sydney Opera House.</p>
@@ -1254,7 +1297,7 @@
         <div class="page goldcoast-theme">
             <div class="page-header">
                 <span class="city-tag">GOLD COAST</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1265,7 +1308,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80" alt="春溪國家公園與天然橋 Springbrook and Natural Bridge" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=80" alt="春溪國家公園與天然橋 Springbrook and Natural Bridge" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Gold Coast, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Springbrook was shaped by the Tweed volcano about 23 million years ago. Rain and rivers later made valleys, cliffs, and waterfalls. Natural Bridge was made when water slowly wore away the rock and formed a cave.</p>
@@ -1306,14 +1350,12 @@
                     In the quiet, dark, and wet caves of Springbrook rainforest, tiny living lights glow like blue-green stars in the dark. Let's learn about these magical creatures!
                 </div>
                 
-                <!-- Glow-worm 1: Not a worm -->
                 <div class="glowworm-card">
                     <h4 class="glowworm-card-title">💡 1. 藍光蟲 Glow-worms：不是蟲，也不是螢火蟲</h4>
                     <p class="glowworm-card-desc-en">A glow-worm is not a worm and not a firefly. It is the larva of a tiny fungus gnat. The Springbrook species is Arachnocampa flava. It likes dark, quiet, wet caves and rainforest walls.</p>
                     <p class="glowworm-card-desc-zh">澳洲俗稱的glow-worm並不是真正的蠕蟲，也不是螢火蟲，而是一種小型蕈蚋（fungus gnat）的幼蟲。春溪常見的種類是Arachnocampa flava，主要分布在昆士蘭東南部。幼蟲喜歡黑暗、安靜而潮濕的洞穴、岩壁或瀑布附近，因為牠們的身體與黏絲很容易乾掉。</p>
                 </div>
                 
-                <!-- Glow-worm 2: Why do they glow -->
                 <div class="glowworm-card" style="margin-bottom: 0;">
                     <h4 class="glowworm-card-title">💡 2. 藍光蟲為什麼發光？ Why Do Glow-worms Glow?</h4>
                     <p class="glowworm-card-desc-en">Glow-worms make blue-green light by bioluminescence. The light attracts tiny flying insects. A larva hangs sticky silk threads from the ceiling. When an insect gets caught, the larva pulls up the thread and eats it.</p>
@@ -1335,14 +1377,12 @@
             </div>
             
             <div class="page-content" style="justify-content: flex-start;">
-                <!-- Glow-worm 3: How to protect -->
                 <div class="glowworm-card">
                     <h4 class="glowworm-card-title">💡 3. 如何保護藍光蟲 How to Protect Glow-worms</h4>
                     <p class="glowworm-card-desc-en">Be quiet and stay on the path. Do not touch the glow-worms or cave walls. Do not shine a torch or camera flash at them. Bright light can stop their glow and feeding. Let your eyes get used to the dark.</p>
                     <p class="glowworm-card-desc-zh">觀察藍光蟲時要保持安靜、留在步道上，不能觸摸洞壁或藍光蟲，也不能把手電筒直接照向牠們。強光與相機閃光燈可能讓牠們停止發光、打斷捕食。應讓眼睛慢慢適應黑暗；需要照路時，只將低亮度燈光朝地面。夜間雨林濕滑，也應由大人陪同或參加合適的導覽。</p>
                 </div>
                 
-                <!-- Interactive Drawing Activity -->
                 <div class="drawing-box-container">
                     <div class="drawing-box-title">🎨 Draw Your Own Glow-worm Cave!</div>
                     <div class="drawing-box-title" style="font-size: 11pt;">畫出你的藍光蟲洞穴！</div>
@@ -1383,7 +1423,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1394,7 +1434,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80" alt="雪梨歌劇院 Sydney Opera House" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?auto=format&fit=crop&w=1200&q=80" alt="雪梨歌劇院 Sydney Opera House" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Australia held a competition for a new opera house. A 38-year-old Danish architect, Jørn Utzon, won with design number 218. He shaped the roofs like pieces cut from one giant ball. Building began in 1959, and the Opera House opened in 1973.</p>
@@ -1421,7 +1462,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1432,7 +1473,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1524820197278-540916411e20?auto=format&fit=crop&w=800&q=80" alt="雪梨港灣大橋 Sydney Harbour Bridge" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1524820197278-540916411e20?auto=format&fit=crop&w=1200&q=80" alt="雪梨港灣大橋 Sydney Harbour Bridge" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">The bridge arch looks like a coat hanger, so people call it “The Coathanger.” Work began in 1923, and the bridge opened in 1932. At the opening, Francis de Groot rode forward on a horse and cut the ribbon with a sword before the ceremony.</p>
@@ -1459,7 +1501,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1470,7 +1512,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1549918830-11670403c488?auto=format&fit=crop&w=800&q=80" alt="環形碼頭 Circular Quay" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1528072164453-f4e8ef9d475a?auto=format&fit=crop&w=1200&q=80" alt="環形碼頭 Circular Quay" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">A quay is a place where boats stop, and “quay” sounds like “key.” It was first called Semi-circular Quay because of its shape. Before the British arrived, this was Cadigal Country. The First Fleet arrived nearby in 1788.</p>
@@ -1497,7 +1540,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1508,7 +1551,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?auto=format&fit=crop&w=800&q=80" alt="塔龍加動物園 Taronga Zoo" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1200&q=80" alt="塔龍加動物園 Taronga Zoo" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">“Taronga” was chosen to mean a sea view or beautiful view. Sydney’s old zoo became too small, so it moved from Moore Park to Mosman. Taronga Zoo opened in 1916 and now works on conservation, science, and education.</p>
@@ -1535,7 +1579,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1546,7 +1590,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" alt="邦代海灘 Bondi Beach" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80" alt="邦代海灘 Bondi Beach" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">“Bondi” is commonly believed to come from the Dharawal language and may describe waves hitting rocks. Bondi became a public beach in 1882. Australia’s first recorded surf lifesaving club began here in 1907.</p>
@@ -1573,7 +1618,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1584,7 +1629,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1549637642-9018f0dbab12?auto=format&fit=crop&w=800&q=80" alt="達令港 Darling Harbour" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1504509546545-e000b4a62425?auto=format&fit=crop&w=1200&q=80" alt="達令港 Darling Harbour" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">The harbour was once called Long Cove and Cockle Bay. In 1826, Governor Ralph Darling gave it his family name. It was once a busy place for ships, warehouses, and factories. The new visitor area opened in 1988.</p>
@@ -1611,7 +1657,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1622,7 +1668,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="雪梨市政廳 Sydney Town Hall" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1624314138470-5a2f24623f10?auto=format&fit=crop&w=1200&q=80" alt="雪梨市政廳 Sydney Town Hall" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Sydney Town Hall was built from 1868 to 1889 with local sandstone from Pyrmont. The site was once part of Sydney’s early burial ground. The building is used for city work, ceremonies, meetings, and concerts. Its Grand Organ was once the largest pipe organ in the world.</p>
@@ -1649,7 +1696,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1660,7 +1707,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80" alt="海德公園 Hyde Park" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80" alt="海德公園 Hyde Park" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">Hyde Park is Australia’s oldest public park. It covers about 16 hectares. Long ago, people held horse races, cricket games, and public events here. The Archibald Fountain opened in 1932, and the Anzac Memorial opened in 1934.</p>
@@ -1687,7 +1735,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1698,7 +1746,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1545638192-3a9ec2b10091?auto=format&fit=crop&w=800&q=80" alt="聖母主教座堂 St Mary’s Cathedral" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1548625361-155defe219f7?auto=format&fit=crop&w=1200&q=80" alt="聖母主教座堂 St Mary’s Cathedral" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">The first St Mary’s chapel began here in 1821. A fire destroyed the old building in 1865. Architect William Wardell designed a new Gothic Revival cathedral with Sydney sandstone. He also used Australian plants in the decorations. The two southern spires were completed in 2000.</p>
@@ -1725,7 +1774,7 @@
         <div class="page sydney-theme">
             <div class="page-header">
                 <span class="city-tag">SYDNEY</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -1736,7 +1785,8 @@
                         </h4>
                         
                         <div class="attraction-img-container">
-                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="雪梨大學 The University of Sydney" class="attraction-img" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80" alt="雪梨大學 The University of Sydney" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 Sydney, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">The University of Sydney was founded in 1850 and is Australia’s oldest university. Classes began in 1852. The Great Hall and Quadrangle were designed by Edmund Blacket in a Victorian Gothic style.</p>
@@ -1777,7 +1827,7 @@
             <div class="back-closing">
                 <div class="closing-banner">Have a wonderful trip!</div>
                 <div class="closing-sub">祝你有一趟精彩的澳洲旅行！</div>
-                <div class="stamp-decor">🐨 🦘 ✈️ 運 🛳️ 🏖️</div>
+                <div class="stamp-decor">🐨 🦘 ✈️ 🛳️ 🏖️</div>
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>

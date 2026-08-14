@@ -5,45 +5,44 @@ def build_html():
     with open('book_data.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
         
-    # Manual corrections for some fields
     data["challenges"][0]["zh"] = "為什麼故事橋叫Story Bridge？"
     data["challenges"][0]["en"] = "Why is Story Bridge called Story Bridge?"
     
-    # Map of representative images from Unsplash for every single attraction
+    # Hand-curated IG-style travel photographer photo URLs
     unsplash_images = {
         # Brisbane
-        "South Bank Parklands": "https://images.unsplash.com/photo-1590233649603-4e8c3b9b4d47?auto=format&fit=crop&w=800&q=80",
-        "Story Bridge": "https://images.unsplash.com/photo-1549849171-09f62448c5dd?auto=format&fit=crop&w=800&q=80",
-        "Lone Pine Koala Sanctuary": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80",
-        "Mount Coot-tha Lookout": "https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=800&q=80",
-        "Queensland Museum": "https://images.unsplash.com/photo-1501290741922-b56c0d0974cf?auto=format&fit=crop&w=800&q=80",
-        "Brisbane River and CityCat": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80",
-        "Mulgumpin (Moreton Island)": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-        "Brisbane and Kaohsiung: Sister City": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80",
-        "Brisbane and Kaohsiung: 姐妹市": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80",
-        "Brisbane and Kaohsiung": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=800&q=80",
-        "The University of Queensland": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+        "South Bank Parklands": "https://images.unsplash.com/photo-1549474843-ed8398284534?auto=format&fit=crop&w=1200&q=80",
+        "Story Bridge": "https://images.unsplash.com/photo-1563294329-873d9d3f1a0e?auto=format&fit=crop&w=1200&q=80",
+        "Lone Pine Koala Sanctuary": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=80",
+        "Mount Coot-tha Lookout": "https://images.unsplash.com/photo-1510546020578-a35ad983d955?auto=format&fit=crop&w=1200&q=80",
+        "Queensland Museum": "https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?auto=format&fit=crop&w=1200&q=80",
+        "Brisbane River and CityCat": "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?auto=format&fit=crop&w=1200&q=80",
+        "Mulgumpin (Moreton Island)": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+        "Brisbane and Kaohsiung: Sister City": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=1200&q=80",
+        "Brisbane and Kaohsiung: 姐妹市": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=1200&q=80",
+        "Brisbane and Kaohsiung": "https://images.unsplash.com/photo-1611718037158-b118b6e2fe6e?auto=format&fit=crop&w=1200&q=80",
+        "The University of Queensland": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80",
         
         # Gold Coast
-        "Surfers Paradise": "https://images.unsplash.com/photo-1544913776-90c1223073a3?auto=format&fit=crop&w=800&q=80",
-        "Currumbin Wildlife Sanctuary": "https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=800&q=80",
-        "Warner Bros. Movie World": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
-        "Sea World": "https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=800&q=80",
-        "Q1大樓與SkyPoint觀景台": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-        "Springbrook and Natural Bridge": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+        "Surfers Paradise": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80",
+        "Currumbin Wildlife Sanctuary": "https://images.unsplash.com/photo-1612024782955-49fae79e42bb?auto=format&fit=crop&w=1200&q=80",
+        "Warner Bros. Movie World": "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=1200&q=80",
+        "Sea World": "https://images.unsplash.com/photo-1570473541596-22418e61c3fd?auto=format&fit=crop&w=1200&q=80",
+        "Q1大樓與SkyPoint觀景台": "https://images.unsplash.com/photo-1579621970795-87faff3f900a?auto=format&fit=crop&w=1200&q=80",
+        "Springbrook and Natural Bridge": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=80",
         
         # Sydney
-        "Sydney Opera House": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
-        "Sydney Harbour Bridge": "https://images.unsplash.com/photo-1524820197278-540916411e20?auto=format&fit=crop&w=800&q=80",
-        "Circular Quay": "https://images.unsplash.com/photo-1549918830-11670403c488?auto=format&fit=crop&w=800&q=80",
-        "Taronga Zoo": "https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?auto=format&fit=crop&w=800&q=80",
-        "Bondi Beach": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80",
-        "Darling Harbour": "https://images.unsplash.com/photo-1549637642-9018f0dbab12?auto=format&fit=crop&w=800&q=80",
-        "Sydney Town Hall": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-        "Hyde Park": "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80",
-        "聖母主教座堂 St Mary’s Cathedral": "https://images.unsplash.com/photo-1545638192-3a9ec2b10091?auto=format&fit=crop&w=800&q=80",
-        "St Mary's Cathedral": "https://images.unsplash.com/photo-1545638192-3a9ec2b10091?auto=format&fit=crop&w=800&q=80",
-        "The University of Sydney": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80"
+        "Sydney Opera House": "https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?auto=format&fit=crop&w=1200&q=80",
+        "Sydney Harbour Bridge": "https://images.unsplash.com/photo-1524820197278-540916411e20?auto=format&fit=crop&w=1200&q=80",
+        "Circular Quay": "https://images.unsplash.com/photo-1528072164453-f4e8ef9d475a?auto=format&fit=crop&w=1200&q=80",
+        "Taronga Zoo": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1200&q=80",
+        "Bondi Beach": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80",
+        "Darling Harbour": "https://images.unsplash.com/photo-1504509546545-e000b4a62425?auto=format&fit=crop&w=1200&q=80",
+        "Sydney Town Hall": "https://images.unsplash.com/photo-1624314138470-5a2f24623f10?auto=format&fit=crop&w=1200&q=80",
+        "Hyde Park": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80",
+        "聖母主教座堂 St Mary’s Cathedral": "https://images.unsplash.com/photo-1548625361-155defe219f7?auto=format&fit=crop&w=1200&q=80",
+        "St Mary's Cathedral": "https://images.unsplash.com/photo-1548625361-155defe219f7?auto=format&fit=crop&w=1200&q=80",
+        "The University of Sydney": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80"
     }
 
     html = """<!DOCTYPE html>
@@ -396,13 +395,15 @@ def build_html():
             font-size: 14pt;
         }
 
+        /* Photographer / IG Style Photo Frame */
         .attraction-img-container {
+            position: relative;
             width: 100%;
-            height: 80mm;
+            height: 82mm;
             border-radius: var(--border-radius);
             overflow: hidden;
             border: 4px solid white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             margin-bottom: 10px;
         }
 
@@ -410,6 +411,28 @@ def build_html():
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: contrast(1.04) saturate(1.08);
+            transition: transform 0.3s ease;
+        }
+
+        /* IG Style Location Tag Badge */
+        .ig-badge {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 9pt;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         /* English font doubled in size as requested: ~18-20pt */
@@ -455,7 +478,6 @@ def build_html():
             text-transform: uppercase;
         }
 
-        /* English font in fun fact doubled size: ~15pt */
         .funfact-text-en {
             font-size: 15pt;
             font-weight: 600;
@@ -546,7 +568,7 @@ def build_html():
         }
 
         .glowworm-card-desc-en {
-            font-size: 14.5pt; /* Slightly smaller for fitting two on a page, but still very large */
+            font-size: 14.5pt;
             font-weight: 500;
             line-height: 1.5;
             color: #ffffff;
@@ -559,7 +581,6 @@ def build_html():
             line-height: 1.5;
         }
 
-        /* Drawing Box for Glow-worms */
         .drawing-box-container {
             width: 100%;
             height: 90mm;
@@ -689,6 +710,13 @@ def build_html():
                 size: A4;
                 margin: 0;
             }
+
+            .ig-badge {
+                border: 1px solid #ffffff;
+                background: #0f172a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
@@ -726,7 +754,6 @@ def build_html():
 
     page_num = 2
     
-    # Iterate through cities
     for city_idx, city in enumerate(data["cities"]):
         theme_class = "brisbane-theme" if city_idx == 0 else "goldcoast-theme" if city_idx == 1 else "sydney-theme"
         img_name = "brisbane.jpg" if city_idx == 0 else "gold_coast.jpg" if city_idx == 1 else "sydney.jpg"
@@ -758,16 +785,12 @@ def build_html():
         """
         page_num += 1
         
-        # attractions processing
         attractions = city["attractions"]
-        
-        # If Gold Coast (index 1), split out Glow-worms (items 7, 8, 9) into the special segment
         normal_attractions = []
         glowworm_attractions = []
         
         if city_idx == 1:
             for attr in attractions:
-                # Glow-worms are items 7, 8, 9
                 if attr["num"] in ["7", "8", "9"]:
                     glowworm_attractions.append(attr)
                 else:
@@ -775,12 +798,9 @@ def build_html():
         else:
             normal_attractions = attractions
             
-        # Render normal attractions (1 per page)
         for attr in normal_attractions:
-            # Map Unsplash image
             attr_title_clean = attr["title"]
-            # Find closest match in unsplash_images key
-            img_url = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" # fallback
+            img_url = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
             for k in unsplash_images.keys():
                 if k in attr_title_clean or attr_title_clean in k:
                     img_url = unsplash_images[k]
@@ -791,7 +811,7 @@ def build_html():
         <div class="page {theme_class}">
             <div class="page-header">
                 <span class="city-tag">{city['name_en'].upper()}</span>
-                <span>EXPLORER GUIDE</span>
+                <span>PHOTOGRAPHER'S CHOICE 📸</span>
             </div>
             <div class="page-content">
                 <div class="attraction-wrapper">
@@ -803,6 +823,7 @@ def build_html():
                         
                         <div class="attraction-img-container">
                             <img src="{img_url}" alt="{attr['title']}" class="attraction-img" loading="lazy">
+                            <div class="ig-badge">📍 {city['name_en']}, Australia &bull; @photo_spot</div>
                         </div>
                         
                         <p class="attraction-desc-en">{attr['desc_en']}</p>
@@ -827,9 +848,7 @@ def build_html():
             """
             page_num += 1
             
-        # Render Glow-worm Special Section if city is Gold Coast
         if city_idx == 1 and len(glowworm_attractions) > 0:
-            # Glow-worms Part 1: Cover + Intro + What is + Why glow
             html += f"""
         <!-- PAGE {page_num}: SPECIAL FEATURE - GLOW-WORMS (PART 1) -->
         <div class="page glowworm-cover">
@@ -849,14 +868,12 @@ def build_html():
                     In the quiet, dark, and wet caves of Springbrook rainforest, tiny living lights glow like blue-green stars in the dark. Let's learn about these magical creatures!
                 </div>
                 
-                <!-- Glow-worm 1: Not a worm -->
                 <div class="glowworm-card">
                     <h4 class="glowworm-card-title">💡 1. {glowworm_attractions[0]['title']}</h4>
                     <p class="glowworm-card-desc-en">{glowworm_attractions[0]['desc_en']}</p>
                     <p class="glowworm-card-desc-zh">{glowworm_attractions[0]['desc_zh']}</p>
                 </div>
                 
-                <!-- Glow-worm 2: Why do they glow -->
                 <div class="glowworm-card" style="margin-bottom: 0;">
                     <h4 class="glowworm-card-title">💡 2. {glowworm_attractions[1]['title']}</h4>
                     <p class="glowworm-card-desc-en">{glowworm_attractions[1]['desc_en']}</p>
@@ -872,7 +889,6 @@ def build_html():
             """
             page_num += 1
             
-            # Glow-worms Part 2: How to protect + Drawing activity
             html += f"""
         <!-- PAGE {page_num}: SPECIAL FEATURE - GLOW-WORMS (PART 2) -->
         <div class="page glowworm-cover">
@@ -882,14 +898,12 @@ def build_html():
             </div>
             
             <div class="page-content" style="justify-content: flex-start;">
-                <!-- Glow-worm 3: How to protect -->
                 <div class="glowworm-card">
                     <h4 class="glowworm-card-title">💡 3. {glowworm_attractions[2]['title']}</h4>
                     <p class="glowworm-card-desc-en">{glowworm_attractions[2]['desc_en']}</p>
                     <p class="glowworm-card-desc-zh">{glowworm_attractions[2]['desc_zh']}</p>
                 </div>
                 
-                <!-- Interactive Drawing Activity -->
                 <div class="drawing-box-container">
                     <div class="drawing-box-title">🎨 Draw Your Own Glow-worm Cave!</div>
                     <div class="drawing-box-title" style="font-size: 11pt;">畫出你的藍光蟲洞穴！</div>
@@ -925,7 +939,7 @@ def build_html():
             <div class="back-closing">
                 <div class="closing-banner">Have a wonderful trip!</div>
                 <div class="closing-sub">祝你有一趟精彩的澳洲旅行！</div>
-                <div class="stamp-decor">🐨 🦘 ✈️ 運 🛳️ 🏖️</div>
+                <div class="stamp-decor">🐨 🦘 ✈️ 🛳️ 🏖️</div>
             </div>
             <div class="page-footer">
                 <span>⭐ MY AUSTRALIA TRAVEL BOOK</span>
@@ -942,7 +956,7 @@ def build_html():
     
     with open('travel_book.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    print("HTML booklet file generated successfully as travel_book.html with 32 pages.")
+    print("HTML booklet regenerated with IG photographer-style photo URLs and badges!")
 
 if __name__ == '__main__':
     build_html()
