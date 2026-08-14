@@ -1,0 +1,315 @@
+{
+  "title": "MY AUSTRALIA TRAVEL BOOK",
+  "subtitle": "我的澳洲旅行小書",
+  "intro_title": "如何使用這本小讀本 How to Use This Book",
+  "intro_zh": "每個景點都有中文故事、簡易英文與趣味小知識。旅行前可以先讀，抵達景點後再找找看書中提到的建築、動物或歷史線索。",
+  "intro_en": "Each place has a Chinese story, simple English, and a fun fact. Read it before the trip, then look for the buildings, animals, and clues when you arrive.",
+  "table_title": "我們要去哪裡？ Where Are We Going?",
+  "cities": [
+    {
+      "name_zh": "布里斯本",
+      "name_en": "Brisbane",
+      "tagline": "THE RIVER CITY",
+      "desc_zh": "布里斯本是昆士蘭州的首府。城市沿著布里斯本河發展，因此河流、橋梁和渡輪都是日常生活的重要部分。這裡也有澳洲動物、古老沙島、原住民族文化，以及和台灣高雄市的特別友誼。",
+      "desc_en": "Brisbane is the capital of Queensland. The city grew around the Brisbane River. It has bridges, ferries, Australian animals, a great sand island, First Nations culture, and a special friendship with Kaohsiung in Taiwan.",
+      "attractions": [
+        {
+          "num": "1",
+          "title": "南岸公園 South Bank Parklands",
+          "desc_zh": "南岸過去曾是碼頭與工業區。1988年，布里斯本在這裡舉辦世界博覽會World Expo 88，許多國家來展示文化與科技。博覽會結束後，居民希望土地成為大家都能使用的公園，因此南岸公園在1992年開放。園內的尼泊爾和平塔，是博覽會留下的重要木造建築。",
+          "desc_en": "South Bank was once an area of docks and factories. Brisbane held World Expo 88 here. After the Expo, people wanted a public park, so South Bank Parklands opened in 1992. The wooden Nepalese Peace Pagoda remains from the Expo.",
+          "fun_fact_zh": "Streets Beach是一座城市中的人造沙灘，可以一邊玩水，一邊看見市中心大樓。",
+          "fun_fact_en": "Streets Beach is a man-made beach in the city. We can swim and see city buildings at the same time.",
+          "source": "Source: State Library of Queensland"
+        },
+        {
+          "num": "2",
+          "title": "故事橋 Story Bridge",
+          "desc_zh": "故事橋不是因為橋上有很多故事而得名。Story是John Douglas Story的姓氏。他是重要公務員，也長期支持興建這座橋。據報導，1937年政府宣布以他命名時，個性低調的Story先生驚訝得昏倒了。橋在1935年動工、1940年開放，工人從河的兩岸同時建造，最後在中央接合。",
+          "desc_en": "Story Bridge is named after John Douglas Story. “Story” was his family name. He strongly supported the plan for the bridge. Work began in 1935, and the bridge opened in 1940. Workers built from both sides of the river and met in the middle.",
+          "fun_fact_zh": "故事橋使用大約125萬顆鉚釘。鉚釘像強壯的金屬釘，把鋼鐵固定在一起。",
+          "fun_fact_en": "The bridge has about 1.25 million rivets. These strong metal pins hold the steel together.",
+          "source": "Source: Brisbane City Council · Queensland State Archives"
+        },
+        {
+          "num": "3",
+          "title": "龍柏無尾熊保護區 Lone Pine Koala Sanctuary",
+          "desc_zh": "Lone Pine意思是「孤單的一棵松樹」，名稱來自土地上原本單獨生長的一棵澳洲貝殼杉。Claude Reid在1927年建立保護區，當時許多無尾熊因毛皮而遭獵捕。他希望提供安全的家。保護區剛成立時只有兩隻無尾熊，名字叫Jack和Jill。",
+          "desc_en": "“Lone Pine” means one pine tree standing alone. Claude Reid opened the sanctuary in 1927, when many koalas were killed for fur. It began with two koalas named Jack and Jill.",
+          "fun_fact_zh": "這是世界上歷史最悠久的無尾熊保護區；現在可以近距離觀察，但不再提供抱無尾熊活動。",
+          "fun_fact_en": "It is the world’s oldest koala sanctuary. Visitors can watch koalas closely, but they do not hold them.",
+          "source": "Source: Lone Pine Koala Sanctuary"
+        },
+        {
+          "num": "4",
+          "title": "庫薩山觀景台 Mount Coot-tha Lookout",
+          "desc_zh": "Mount Coot-tha的名稱來自傳統語言Kuta，意思大約是「野生蜂蜜之地」。過去這裡有很多不會螫人的原生蜜蜂。歐洲人曾把山叫作One Tree Hill，因為測量人員清除山頂附近的樹，只留一棵作為測量標記。1883年才改回Mount Coot-tha。",
+          "desc_en": "The name Mount Coot-tha comes from “Kuta,” meaning a place of wild honey. Native stingless bees lived here. Europeans once called it One Tree Hill because surveyors left one tree as a marker. The name changed to Mount Coot-tha in 1883.",
+          "fun_fact_zh": "從觀景台可看見布里斯本市中心；晴天時還可能看見摩頓灣。",
+          "fun_fact_en": "From the lookout, we can see Brisbane and, on a clear day, Moreton Bay.",
+          "source": "Source: Museum of Brisbane"
+        },
+        {
+          "num": "5",
+          "title": "昆士蘭博物館 Queensland Museum",
+          "desc_zh": "昆士蘭博物館成立於1862年，收集與研究昆士蘭的動物、植物、岩石、化石和文化物品。博物館搬過幾次家，1986年才來到南岸。館藏帶我們從恐龍時代一路認識到現代的昆士蘭。",
+          "desc_en": "Queensland Museum began in 1862. It collected animals, plants, rocks, fossils, and cultural objects. It moved to South Bank in 1986. The museum tells stories from dinosaur times to today.",
+          "fun_fact_zh": "木他布拉龍Muttaburrasaurus的化石在昆士蘭被發現，名字來自Muttaburra小鎮。",
+          "fun_fact_en": "Muttaburrasaurus fossils were found in Queensland. The dinosaur was named after the town of Muttaburra.",
+          "source": "Source: Queensland Museum"
+        },
+        {
+          "num": "6",
+          "title": "布里斯本河與城市貓船 Brisbane River and CityCat",
+          "desc_zh": "CityCat不是「城市裡的貓」，而是city和catamaran的組合。Catamaran是雙體船，船底有兩個部分。第一批CityCat在1996年開始行駛，不只是觀光船，也是居民上班、上學使用的公共交通。許多船以河岸的原住民族地名命名。",
+          "desc_en": "A CityCat is not a city cat! The name comes from “city” and “catamaran.” A catamaran has two hulls. CityCats began in 1996. They are public transport for workers, students, and visitors.",
+          "fun_fact_zh": "2011年洪水後，有一艘船命名為Spirit of Brisbane，紀念居民互相幫助的精神。",
+          "fun_fact_en": "After the 2011 flood, one boat was named Spirit of Brisbane to remember the city’s helpful spirit.",
+          "source": "Source: RiverCity Ferries"
+        },
+        {
+          "num": "7",
+          "title": "摩頓島（穆爾甘平）Mulgumpin (Moreton Island)",
+          "desc_zh": "摩頓島位在布里斯本外海，傳統名稱是Mulgumpin，意思是「沙丘之地」。它是Quandamooka族人數千年來的家園，也是世界第三大沙島。島上有高大的沙丘、淡水湖、海灘、森林、二次世界大戰海防遺跡，以及昆士蘭最古老的燈塔。今天國家公園由Quandamooka傳統土地所有者與昆士蘭公園管理單位共同管理。",
+          "desc_en": "Moreton Island’s traditional name is Mulgumpin, meaning “place of sandhills.” It is the traditional home of the Quandamooka People and the world’s third-largest sand island. It has dunes, lakes, beaches, forests, old forts, and Queensland’s oldest lighthouse.",
+          "fun_fact_zh": "Tangalooma海邊有15艘政府刻意沉下的舊船，原本用來形成安全停泊區，後來變成人工礁石，吸引魚、珊瑚和其他海洋生物。",
+          "fun_fact_en": "Fifteen old ships were sunk near Tangalooma to make a safe anchorage. They later became an artificial reef and a home for marine life.",
+          "source": "Source: Queensland Parks · Tourism Australia"
+        },
+        {
+          "num": "8",
+          "title": "布里斯本與高雄：姐妹市 Brisbane and Kaohsiung",
+          "desc_zh": "布里斯本和高雄在1997年9月9日正式成為姐妹市。姐妹市就像兩座城市成為國際朋友，彼此分享經驗。兩座城市都有河流或港灣，也是重要的港口與工商城市，因此可在港灣與水岸開發、都市更新、經貿投資、教育、醫療、觀光、文化和人員交流等方面合作。2022年兩市慶祝締盟25週年，高雄的重要建築還點亮布里斯本代表色。",
+          "desc_en": "Brisbane and Kaohsiung became sister cities on 9 September 1997. Sister cities are international friends. Both cities have important rivers, harbours, business, and industry. They share ideas about waterfronts, city planning, trade, education, health, tourism, and culture.",
+          "fun_fact_zh": "「姐妹市」並不是兩座城市長得一模一樣，而是兩個城市答應長期交流與互相學習。",
+          "fun_fact_en": "Sister cities do not have to look the same. They promise to learn from each other and build a long friendship.",
+          "source": "Source: Brisbane City Council · 高雄市政府"
+        },
+        {
+          "num": "9",
+          "title": "昆士蘭大學 The University of Queensland",
+          "desc_zh": "昆士蘭大學簡稱UQ，1909年由昆士蘭州人民建立，是布里斯本重要的大學。主要的St Lucia校區位在布里斯本河畔。校園中央的大中庭Great Court由不同顏色的砂岩建成，牆上有超過1,200件石雕，內容包括昆士蘭歷史、動植物、人物和學術傳統。",
+          "desc_en": "The University of Queensland is called UQ. It was founded in 1909. Its main St Lucia campus sits beside the Brisbane River. The Great Court has colourful sandstone walls and more than 1,200 carvings.",
+          "fun_fact_zh": "仔細看Great Court，可以找到動物、植物、人物，甚至帶點幽默的怪獸臉石雕。",
+          "fun_fact_en": "Look closely at the Great Court. We may find plants, animals, people, and funny stone faces.",
+          "source": "Source: University of Queensland · UQ Community Report"
+        }
+      ]
+    },
+    {
+      "name_zh": "黃金海岸",
+      "name_en": "Gold Coast",
+      "tagline": "BEACHES, RAINFOREST AND LIVING LIGHTS",
+      "desc_zh": "黃金海岸位在布里斯本南方，以海灘、衝浪和主題樂園聞名。往內陸走，還能遇見由古老火山形成的山谷、岡瓦納雨林，以及會在黑暗中發出藍綠色微光的小生物。",
+      "desc_en": "The Gold Coast is south of Brisbane. It is famous for beaches, surfing, and theme parks. In the hinterland, we can find ancient rainforest, volcanic valleys, and tiny living lights.",
+      "attractions": [
+        {
+          "num": "1",
+          "title": "衝浪者天堂 Surfers Paradise",
+          "desc_zh": "這裡原本叫Elston。1920年代，Jim Cavill開設Surfers Paradise Hotel，吸引遊客來度假。「衝浪者天堂」比Elston更讓人想到海灘與假期，因此1933年正式改名。主要道路Cavill Avenue也以Jim Cavill命名。",
+          "desc_en": "This place was once called Elston. Jim Cavill opened the Surfers Paradise Hotel in the 1920s. The town changed its name to Surfers Paradise in 1933. Cavill Avenue is named after Jim Cavill.",
+          "fun_fact_zh": "過去有穿金色服裝的Meter Maids替遊客投入停車費，避免收到罰單。",
+          "fun_fact_en": "Gold Coast Meter Maids once put coins into parking meters to help visitors avoid fines.",
+          "source": "Source: City of Gold Coast"
+        },
+        {
+          "num": "2",
+          "title": "可倫賓野生動物保護區 Currumbin Wildlife Sanctuary",
+          "desc_zh": "花農Alex Griffiths發現彩虹吸蜜鸚鵡常來吃花。他沒有趕走牠們，而是準備食物吸引牠們到另一處。彩色鳥群也吸引居民和遊客，於是他在1947年開放Currumbin Bird Sanctuary。後來保護區照顧更多動物，1989年成立野生動物醫院。",
+          "desc_en": "Alex Griffiths grew flowers. Rainbow lorikeets came to eat them, so he offered food in another place. The colourful birds attracted visitors. He opened Currumbin Bird Sanctuary in 1947. A wildlife hospital opened in 1989.",
+          "fun_fact_zh": "一個「保護花朵」的小方法，最後變成著名的野生動物保護區。",
+          "fun_fact_en": "A small plan to protect flowers grew into a famous wildlife sanctuary.",
+          "source": "Source: Currumbin Wildlife Sanctuary"
+        },
+        {
+          "num": "3",
+          "title": "華納兄弟電影世界 Warner Bros. Movie World",
+          "desc_zh": "電影世界在1991年開放，旁邊有真正的電影攝影棚。早期設施會教遊客如何製作假爆炸、飛車和動作特效。開幕時有Clint Eastwood等明星參加，兔寶寶Bugs Bunny也一起出席特別的剪綵儀式。",
+          "desc_en": "Movie World opened in 1991 beside real film studios. Early attractions showed how pretend explosions, car chases, and stunts were made. Movie stars and Bugs Bunny joined the opening celebration.",
+          "fun_fact_zh": "電影中的危險動作通常由受過訓練的特技演員完成，並經過仔細計畫。",
+          "fun_fact_en": "Movie stunts are carefully planned and performed by trained people.",
+          "source": "Source: Movie World"
+        },
+        {
+          "num": "4",
+          "title": "海洋世界 Sea World",
+          "desc_zh": "Sea World最初是Keith Williams經營的水上滑水表演。1971年搬到The Spit並開放，後來加入海洋動物展示、教育、救援復健和遊樂設施。",
+          "desc_en": "Sea World began as a water-ski show. It moved to The Spit and opened in 1971. Later, it added marine animals, learning activities, rescue work, and rides.",
+          "fun_fact_zh": "海洋動物救援的目標之一，是在適合時讓康復的野生動物回到大自然。",
+          "fun_fact_en": "One goal of wildlife rescue is to return healthy wild animals to nature when possible.",
+          "source": "Source: National Film and Sound Archive"
+        },
+        {
+          "num": "5",
+          "title": "Q1大樓與SkyPoint觀景台",
+          "desc_zh": "Q1是Queensland Number One的縮寫。大樓在2005年完工，包括尖塔高約322.5公尺。外形受到2000年雪梨奧運火炬與雪梨歌劇院啟發。從SkyPoint可以看到海灘、城市與內陸山區。",
+          "desc_en": "Q1 means “Queensland Number One.” It was completed in 2005 and is about 322.5 metres tall, including its spire. Its shape was inspired by the Sydney Olympic torch and the Sydney Opera House.",
+          "fun_fact_zh": "Q1尖塔大約93公尺長，從地面看起來卻像一根細針。",
+          "fun_fact_en": "The Q1 spire is about 93 metres long, but it looks like a thin needle from the ground.",
+          "source": "Source: SkyPoint"
+        },
+        {
+          "num": "6",
+          "title": "春溪國家公園與天然橋 Springbrook and Natural Bridge",
+          "desc_zh": "春溪地形與約2,300萬年前的Tweed火山有關。火山停止後，雨水與河流慢慢切割土地，形成山谷、懸崖與瀑布。這裡的森林屬於澳洲岡瓦納雨林世界遺產。天然橋不是人造橋，而是瀑布長時間侵蝕岩石，形成洞穴與上方石拱。",
+          "desc_en": "Springbrook was shaped by the Tweed volcano about 23 million years ago. Rain and rivers later made valleys, cliffs, and waterfalls. Natural Bridge was made when water slowly wore away the rock and formed a cave.",
+          "fun_fact_zh": "白天看天然橋的瀑布，入夜後，同一座洞穴可能變成藍光蟲的小小星空。",
+          "fun_fact_en": "By day we see a waterfall. After dark, the same cave may look like a tiny starry sky.",
+          "source": "Source: Queensland Parks"
+        },
+        {
+          "num": "7",
+          "title": "藍光蟲 Glow-worms：不是蟲，也不是螢火蟲",
+          "desc_zh": "澳洲俗稱的glow-worm並不是真正的蠕蟲，也不是螢火蟲，而是一種小型蕈蚋（fungus gnat）的幼蟲。春溪常見的種類是Arachnocampa flava，主要分布在昆士蘭東南部。幼蟲喜歡黑暗、安靜而潮濕的洞穴、岩壁或瀑布附近，因為牠們的身體與黏絲很容易乾掉。",
+          "desc_en": "A glow-worm is not a worm and not a firefly. It is the larva of a tiny fungus gnat. The Springbrook species is Arachnocampa flava. It likes dark, quiet, wet caves and rainforest walls.",
+          "fun_fact_zh": "只有幼蟲階段會發出明顯的光；長大後會變成小飛蟲。",
+          "fun_fact_en": "The larva is the stage that glows brightly. Later, it becomes a small flying insect.",
+          "source": "Source: Queensland Parks · Visit Brisbane"
+        },
+        {
+          "num": "8",
+          "title": "藍光蟲為什麼發光？ Why Do Glow-worms Glow?",
+          "desc_zh": "藍光蟲會利用生物發光（bioluminescence）製造藍綠色微光。這盞「身體小燈」不是為了照路，而是用來吸引小飛蟲。牠會從洞頂垂下帶有黏液的細絲，就像迷你釣魚線。小昆蟲被光吸引、黏在線上後，幼蟲便把細絲拉回去進食。通常越飢餓的幼蟲，可能發出越明顯的光。",
+          "desc_en": "Glow-worms make blue-green light by bioluminescence. The light attracts tiny flying insects. A larva hangs sticky silk threads from the ceiling. When an insect gets caught, the larva pulls up the thread and eats it.",
+          "fun_fact_zh": "看起來像浪漫星空，其實每一點光都是一盞小小的「捕食燈」。",
+          "fun_fact_en": "The cave looks like a starry sky, but every light is a tiny hunting lamp.",
+          "source": "Source: Glow Worm Caves Tamborine Mountain · UQ research"
+        },
+        {
+          "num": "9",
+          "title": "如何保護藍光蟲 How to Protect Glow-worms",
+          "desc_zh": "觀察藍光蟲時要保持安靜、留在步道上，不能觸摸洞壁或藍光蟲，也不能把手電筒直接照向牠們。強光與相機閃光燈可能讓牠們停止發光、打斷捕食。應讓眼睛慢慢適應黑暗；需要照路時，只將低亮度燈光朝地面。夜間雨林濕滑，也應由大人陪同或參加合適的導覽。",
+          "desc_en": "Be quiet and stay on the path. Do not touch the glow-worms or cave walls. Do not shine a torch or camera flash at them. Bright light can stop their glow and feeding. Let your eyes get used to the dark.",
+          "fun_fact_zh": "最好的照片有時就是用眼睛和記憶拍下來，因為保護藍光蟲比使用閃光燈更重要。",
+          "fun_fact_en": "Sometimes the best picture is the one we keep in our memory. Protecting the glow-worms is more important than using a flash.",
+          "source": "Source: Queensland Parks visitor guidance"
+        }
+      ]
+    },
+    {
+      "name_zh": "雪梨",
+      "name_en": "Sydney",
+      "tagline": "HARBOUR, HISTORY AND SANDSTONE",
+      "desc_zh": "雪梨是新南威爾斯州首府，也是著名港口城市。原住民族已在這片土地生活數萬年。港口周圍有歌劇院、大橋、碼頭，也有以黃色砂岩建成的市政廳、主教座堂和大學。",
+      "desc_en": "Sydney is the capital of New South Wales and a famous harbour city. First Nations people have lived here for thousands of years. The city has a harbour, bridges, parks, and grand sandstone buildings.",
+      "attractions": [
+        {
+          "num": "1",
+          "title": "雪梨歌劇院 Sydney Opera House",
+          "desc_zh": "1950年代，澳洲舉辦新歌劇院設計比賽。來自丹麥、當時38歲的Jørn Utzon以編號218的作品獲選。白色屋頂很難建造，後來他想到把屋頂設計成同一顆巨大球體切下的不同部分。工程1959年開始，1973年由伊莉莎白二世女王正式開放。",
+          "desc_en": "Australia held a competition for a new opera house. A 38-year-old Danish architect, Jørn Utzon, won with design number 218. He shaped the roofs like pieces cut from one giant ball. Building began in 1959, and the Opera House opened in 1973.",
+          "fun_fact_zh": "屋頂有超過100萬片亮白與米白磁磚，所以會隨陽光改變顏色。",
+          "fun_fact_en": "The roofs have more than one million white and cream tiles. Their colour changes with the sunlight.",
+          "source": "Source: Sydney Opera House"
+        },
+        {
+          "num": "2",
+          "title": "雪梨港灣大橋 Sydney Harbour Bridge",
+          "desc_zh": "大橋的鋼鐵拱形像衣架，因此暱稱The Coathanger。工程1923年開始，兩邊拱架從港口兩岸向中央延伸，1932年開放。開幕時，Francis de Groot突然騎馬衝上前，用劍先把緞帶砍斷，只好把緞帶接回去再完成儀式。",
+          "desc_en": "The bridge arch looks like a coat hanger, so people call it “The Coathanger.” Work began in 1923, and the bridge opened in 1932. At the opening, Francis de Groot rode forward on a horse and cut the ribbon with a sword before the ceremony.",
+          "fun_fact_zh": "大橋有約600萬顆鉚釘；開放後不久，七隻馬戲團大象和一匹小馬曾走過大橋。",
+          "fun_fact_en": "The bridge has about six million rivets. Seven circus elephants and a small pony once walked across it.",
+          "source": "Source: BridgeClimb Sydney"
+        },
+        {
+          "num": "3",
+          "title": "環形碼頭 Circular Quay",
+          "desc_zh": "Quay是碼頭，發音和key相同。碼頭在1837到1855年間興建，最初因石造岸線呈半圓形而叫Semi-circular Quay。英國人到來前，這裡是Cadigal族人的生活範圍；1788年第一艦隊抵達附近Sydney Cove後，殖民城市逐漸由此向外發展。",
+          "desc_en": "A quay is a place where boats stop, and “quay” sounds like “key.” It was first called Semi-circular Quay because of its shape. Before the British arrived, this was Cadigal Country. The First Fleet arrived nearby in 1788.",
+          "fun_fact_zh": "它叫Circular Quay，但現在並不是一個完整的圓形。",
+          "fun_fact_en": "It is called Circular Quay, but it is not a full circle.",
+          "source": "Source: Dictionary of Sydney"
+        },
+        {
+          "num": "4",
+          "title": "塔龍加動物園 Taronga Zoo",
+          "desc_zh": "Taronga這個名稱用來表達「海景」或「美麗景色」，因為動物園從雪梨港北岸望向港灣。雪梨原本的動物園位於Moore Park，後來因空間不足搬到Mosman，1916年開放。今天動物園也重視保育、科學和教育。",
+          "desc_en": "“Taronga” was chosen to mean a sea view or beautiful view. Sydney’s old zoo became too small, so it moved from Moore Park to Mosman. Taronga Zoo opened in 1916 and now works on conservation, science, and education.",
+          "fun_fact_zh": "許多人從環形碼頭搭渡輪到動物園，所以搭船也是旅程的一部分。",
+          "fun_fact_en": "Many visitors take a ferry from Circular Quay. The boat ride is part of the adventure.",
+          "source": "Source: Taronga Zoo"
+        },
+        {
+          "num": "5",
+          "title": "邦代海灘 Bondi Beach",
+          "desc_zh": "Bondi一般認為可能來自Dharawal語言，意思是海水拍打岩石或海浪的聲音，但不同資料仍有不同解釋。海灘在1882年成為公共海灘。1907年，澳洲第一個有正式紀錄的海浪救生俱樂部在此成立。",
+          "desc_en": "“Bondi” is commonly believed to come from the Dharawal language and may describe waves hitting rocks. Bondi became a public beach in 1882. Australia’s first recorded surf lifesaving club began here in 1907.",
+          "fun_fact_zh": "在澳洲海灘要在紅黃旗之間游泳，因為那是救生員巡邏的區域。",
+          "fun_fact_en": "Swim between the red and yellow flags. This is the area watched by lifesavers.",
+          "source": "Source: NSW Environment and Heritage"
+        },
+        {
+          "num": "6",
+          "title": "達令港 Darling Harbour",
+          "desc_zh": "這個港灣曾叫Long Cove，也因岸邊貝殼而叫Cockle Bay。1826年，總督Ralph Darling用自己的姓氏重新命名，所以Darling在這裡是人名。過去它是船舶、倉庫和工廠聚集的工業港；重新規劃後，新的達令港在1988年開放。",
+          "desc_en": "The harbour was once called Long Cove and Cockle Bay. In 1826, Governor Ralph Darling gave it his family name. It was once a busy place for ships, warehouses, and factories. The new visitor area opened in 1988.",
+          "fun_fact_zh": "澳洲第一部投入工作的蒸汽機，1815年就在這個地區開始運轉。",
+          "fun_fact_en": "Australia’s first working steam engine began operating in this area in 1815.",
+          "source": "Source: Darling Harbour"
+        },
+        {
+          "num": "7",
+          "title": "雪梨市政廳 Sydney Town Hall",
+          "desc_zh": "雪梨市政廳在1868至1889年間分階段建造，使用Pyrmont開採的雪梨砂岩。這裡過去是雪梨早期墓地的一部分。市政廳不只是政府辦公地點，也舉行會議、典禮、音樂會和重要市民活動。大廳中的Grand Organ在19世紀末完成時，是世界最大的管風琴。",
+          "desc_en": "Sydney Town Hall was built from 1868 to 1889 with local sandstone from Pyrmont. The site was once part of Sydney’s early burial ground. The building is used for city work, ceremonies, meetings, and concerts. Its Grand Organ was once the largest pipe organ in the world.",
+          "fun_fact_zh": "市政廳下方有Town Hall火車站，古老城市建築與現代交通就在同一個地點相遇。",
+          "fun_fact_en": "Town Hall Station is below the area. An old city building and modern transport meet in one place.",
+          "source": "Source: City of Sydney"
+        },
+        {
+          "num": "8",
+          "title": "海德公園 Hyde Park",
+          "desc_zh": "海德公園是澳洲歷史最悠久的公共公園，占地約16公頃。過去曾用來舉行賽馬、板球和公共活動。公園北端的Archibald Fountain在1932年完成，紀念第一次世界大戰中澳洲與法國的友誼；南端的Anzac Memorial在1934年開放，紀念戰爭中的澳洲軍人。",
+          "desc_en": "Hyde Park is Australia’s oldest public park. It covers about 16 hectares. Long ago, people held horse races, cricket games, and public events here. The Archibald Fountain opened in 1932, and the Anzac Memorial opened in 1934.",
+          "fun_fact_zh": "公園裡一座看似埃及方尖碑的建築，其實是1857年設置的地下污水系統通風口。",
+          "fun_fact_en": "A tall object that looks like an Egyptian obelisk is really an air vent for an old underground sewer.",
+          "source": "Source: City of Sydney - Hyde Park · Archibald Fountain"
+        },
+        {
+          "num": "9",
+          "title": "聖母主教座堂 St Mary’s Cathedral",
+          "desc_zh": "1821年，第一座St Mary’s小教堂在這裡奠基。原建築在1865年大火中燒毀，建築師William Wardell重新設計哥德復興式主教座堂。建築使用雪梨砂岩，窗戶、尖拱和高柱讓人想到歐洲中古世紀教堂，但裝飾中也加入澳洲原生植物。主要工程分兩階段進行，南側雙尖塔直到2000年才完成。",
+          "desc_en": "The first St Mary’s chapel began here in 1821. A fire destroyed the old building in 1865. Architect William Wardell designed a new Gothic Revival cathedral with Sydney sandstone. He also used Australian plants in the decorations. The two southern spires were completed in 2000.",
+          "fun_fact_zh": "從第一座小教堂奠基到最後雙尖塔完成，整個故事跨越約179年。",
+          "fun_fact_en": "About 179 years passed from the first foundation stone to the completion of the two spires.",
+          "source": "Source: St Mary’s Cathedral"
+        },
+        {
+          "num": "10",
+          "title": "雪梨大學 The University of Sydney",
+          "desc_zh": "雪梨大學在1850年由新南威爾斯議會通過法案成立，是澳洲歷史最悠久的大學。1852年開課，最初教授古典學、科學、數學與現代語言。校園最著名的Great Hall與Quadrangle由Edmund Blacket設計，採維多利亞哥德式風格，讓人想到英國牛津與劍橋的中庭。",
+          "desc_en": "The University of Sydney was founded in 1850 and is Australia’s oldest university. Classes began in 1852. The Great Hall and Quadrangle were designed by Edmund Blacket in a Victorian Gothic style.",
+          "fun_fact_zh": "Quadrangle所在地早期曾是軍營與農場；現在學生坐在草地讀書的地方，以前竟然有牛。",
+          "fun_fact_en": "The Quadrangle site was once a military camp and a farm. Cows once stood where students now sit on the lawn.",
+          "source": "Source: University of Sydney history · Great Hall and Quadrangle"
+        }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "zh": "為什麼故事橋叫",
+      "en": "Story Bridge？ Why is Story Bridge called Story Bridge?"
+    },
+    {
+      "zh": "摩頓島的傳統名稱Mulgumpin是什麼意思？",
+      "en": "What does Mulgumpin mean?"
+    },
+    {
+      "zh": "藍光蟲發光是為了做什麼？",
+      "en": "Why do glow-worms glow?"
+    },
+    {
+      "zh": "Circular Quay中的quay怎麼發音？",
+      "en": "How do we say “quay”?"
+    },
+    {
+      "zh": "雪梨市政廳、聖母主教座堂和雪梨大學常使用哪一種本地石材？",
+      "en": "What local stone is used in many Sydney buildings?"
+    },
+    {
+      "zh": "你最想再去一次的地方是哪裡？為什麼？",
+      "en": "Which place would you like to visit again, and why?"
+    }
+  ]
+}
